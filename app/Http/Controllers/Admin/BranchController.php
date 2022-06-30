@@ -30,7 +30,7 @@ class BranchController extends Controller
         ]);
 
         Toastr::success(' Branch added successfully.');
-        return redirect()->back();
+        return redirect()->route('branch.list');
     }
 
     public function list(){
@@ -62,7 +62,7 @@ class BranchController extends Controller
         ]);
 
         Toastr::info('Branch updated successfully.');
-        return redirect()->back();
+        return redirect()->route('branch.list');
     }
 
     public function delete($branch){

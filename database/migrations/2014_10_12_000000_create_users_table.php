@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('role',20);
             $table->integer('phone');
             $table->string('n_id',30)->unique();
-            $table->string('branch_id');
+            $table->string('branch_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

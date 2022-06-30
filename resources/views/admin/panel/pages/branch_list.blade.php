@@ -16,7 +16,7 @@
                 <div class="d-flex flex-column flex-md-row">
            <h1>Branch list  </h1> 
                 </div>
-
+                <a href="{{ route('branch.add') }}"><button class="btn btn-primary">Create Branch</button></a>
               </header>
        
               

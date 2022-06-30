@@ -25,6 +25,11 @@
                 <li class="menu-item has-active">
                   <a href="{{route('admin.dashboard')}}" class="menu-link"><span class="menu-icon fas fa-home"></span> <span class="menu-text">Dashboard</span></a>
                 </li><!-- /.menu-item -->
+
+
+
+
+
                 <!-- .menu-item -->
                 <li class="menu-item has-child">
                   <a href="#" class="menu-link"><span class="menu-icon far fa-file"></span> <span class="menu-text">App Pages</span> <span class="badge badge-warning">New</span></a> <!-- child menu -->
@@ -98,50 +103,26 @@
                     <li class="menu-item">
                       <a href="{{Route('branch.list')}}" class="menu-link">Bracnh List</a>
                     </li>
+                  </ul><!-- /child menu -->
+                </li><!-- /.menu-item -->
+
+
+                </li><!-- /.menu-item -->
+                <!-- .menu-item -->
+                <li class="menu-item has-child">
+                  <a href="#" class="menu-link"><span class="menu-icon oi oi-wrench"></span> <span class="menu-text">Area</span></a> <!-- child menu -->
+                  <ul class="menu">
                     <li class="menu-item">
-                      <a href="auth-cookie-consent.html" class="menu-link">Cookie Consent</a>
+                      <a href="{{Route('area.add')}}" class="menu-link">Add Area</a>
                     </li>
                     <li class="menu-item">
-                      <a href="auth-empty-state.html" class="menu-link">Empty State</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="auth-error-v1.html" class="menu-link">Error Page v1</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="auth-error-v2.html" class="menu-link">Error Page v2</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="auth-error-v3.html" class="menu-link">Error Page v3</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="auth-maintenance.html" class="menu-link">Maintenance</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="auth-page-message.html" class="menu-link">Page Message</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="auth-session-timeout.html" class="menu-link">Session Timeout</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="auth-signin-v1.html" class="menu-link">Sign In v1</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="auth-signin-v2.html" class="menu-link">Sign In v2</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="auth-signup.html" class="menu-link">Sign Up</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="auth-recovery-username.html" class="menu-link">Recovery Username</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="auth-recovery-password.html" class="menu-link">Recovery Password</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="auth-lockscreen.html" class="menu-link">Screen Locked</a>
+                      <a href="{{Route('area.list')}}" class="menu-link">Area List</a>
                     </li>
                   </ul><!-- /child menu -->
                 </li><!-- /.menu-item -->
+
+
+
                 <!-- .menu-item -->
                 <li class="menu-item has-child">
                   <a href="#" class="menu-link"><span class="menu-icon oi oi-person"></span> <span class="menu-text">User</span></a> <!-- child menu -->
@@ -222,10 +203,10 @@
                 <li class="menu-header">Interfaces </li><!-- /.menu-header -->
                 <!-- .menu-item -->
                 <li class="menu-item has-child">
-                  <a href="#" class="menu-link"><span class="menu-icon oi oi-puzzle-piece"></span> <span class="menu-text">Components</span></a> <!-- child menu -->
+                  <a href="#" class="menu-link"><span class="menu-icon oi oi-puzzle-piece"></span> <span class="menu-text">Shipments</span></a> <!-- child menu -->
                   <ul class="menu">
                     <li class="menu-item">
-                      <a href="component-general.html" class="menu-link">General</a>
+                      <a href="{{route('shipment.add')}}" class="menu-link">Add Shipment</a>
                     </li>
                     <li class="menu-item">
                       <a href="component-icons.html" class="menu-link">Icons</a>
