@@ -55,7 +55,7 @@
     <div class="col-md-3">
     <div class="form-group">
             <label for="exampleFormControlSelect1">Branch</label> <i class="text-danger">*</i>
-            <select style="width: 200px" id="nameid">
+            <select onchange="getCustomer(this.value)" style="width: 200px" id="nameid">
             <option value=""></option>
             @foreach ($branches as $branch)
                     <option value="{{$branch->id}}">{{$branch->name}}</option>
@@ -92,11 +92,8 @@
     <div class="col-md-3">
     <div class="form-group">
             <label for="exampleFormControlSelect1">Customer/Sender</label> <i class="text-danger">*</i>
-            <select style="width: 200px" id="customer">
-            <option value=""></option>
-         
-                    <option value=""></option>
-                
+            <select onchange="getCustomerPhone(this.value)" id="customer" style="width: 200px" class="customer">
+        <optio></optio>
   
     </select>
 
@@ -107,7 +104,7 @@
 <div class="col-md-3">
 <div class="mb-3">
     <label for="" class="form-label"> Customer Phone</label> <i class="text-danger">*</i>
-    <input name="phone" type="number" class="form-control" id="" required>
+    <input name="phone" type="number" class="form-control" id="phone" required>
   </div>
 </div>
 
@@ -295,7 +292,7 @@
             allowClear: true
         });
 
-        $("#customer").select2({
+        $(".customer").select2({
             placeholder: "Select a Customer",
             allowClear: true
         });
@@ -318,5 +315,42 @@
         
 
         </div>
+
+
+        <script>
+  //Customers under branch
+  function getCustomer(branch){
+            $("#customer").empty();
+            $.ajax({
+                url: 'http://csm.test/admin/customer-list/' + branch,
+                context: document.body,
+                success: function (response){
+
+                    for ( customer of response.data ){
+                        console.log(customer.name)
+                        $("#customer").append("<option value="+customer.id+" ?? '' >"+customer.name+"</option>")
+                    }
+                }
+            });
+        }
+
+
+ //customer phone under customer
+ function getCustomerPhone(customer){
+            $("#phone").empty();
+            $.ajax({
+                url: 'http://csm.test/admin/customer-phone/' + customer,
+                context: document.body,
+                success: function (response){
+                  // console.log(response.data)
+                  for ( phone of response.data ){
+                        console.log(phone.phone)
+                        $('#phone').val(phone.phone);
+                    }
+                     
+                }
+            });
+        }       
+</script>
         
         @endsection

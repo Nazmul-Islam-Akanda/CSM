@@ -236,10 +236,10 @@
                 </li><!-- /.menu-item -->
                 <!-- .menu-item -->
                 <li class="menu-item has-child">
-                  <a href="#" class="menu-link"><span class="menu-icon oi oi-pencil"></span> <span class="menu-text">Forms</span></a> <!-- child menu -->
+                  <a href="#" class="menu-link"><span class="menu-icon oi oi-pencil"></span> <span class="menu-text">Customers</span></a> <!-- child menu -->
                   <ul class="menu">
                     <li class="menu-item">
-                      <a href="form-basic.html" class="menu-link">Basic Elements</a>
+                      <a href="{{route('customer.add')}}" class="menu-link">Add Customer</a>
                     </li>
                     <li class="menu-item">
                       <a href="form-autocompletes.html" class="menu-link">Autocompletes</a>

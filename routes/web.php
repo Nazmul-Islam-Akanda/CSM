@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AreaController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\BranchController;
+use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\ShipmentController;
 use App\Http\Controllers\Admin\DashboardController;
 
@@ -28,6 +29,8 @@ Route::get('/', function () {
 //login
 Route::get('/login',[LoginController::class,'loginpage'])->name('login.page');
 Route::post('/do/login',[LoginController::class,'doLogin'])->name('doLogin');
+
+
 
 Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 
@@ -76,12 +79,32 @@ Route::controller(UserController::class)
  Route::controller(ShipmentController::class)
  ->group(function () {
      Route::get('/shipment/add', 'create')->name('shipment.add');
+//get customers under branch
+Route::get('/customer-list/{branch}','getCustomer');
+//get customer phone under customer
+Route::get('/customer-phone/{customer}','getCustomerPhone');
+
+
     //  Route::post('/user/store','store')->name('user.store');
     //  Route::get('/user/list', 'list')->name('user.list');
     //  Route::get('/user/edit/{user_id}', 'edit')->name('user.edit');
     //  Route::put('/user/update/{user_id}', 'update')->name('user.update');
     //  Route::get('/user/delete/{user_id}', 'delete')->name('user.delete');
  });
+
+  //customers
+  Route::controller(CustomerController::class)
+  ->group(function () {
+      Route::get('/customer/add', 'create')->name('customer.add');
+//get area under branch
+Route::get('/area-list/{branch}','getArea');
+
+      Route::post('/customer/store','store')->name('customer.store');
+     //  Route::get('/user/list', 'list')->name('user.list');
+     //  Route::get('/user/edit/{user_id}', 'edit')->name('user.edit');
+     //  Route::put('/user/update/{user_id}', 'update')->name('user.update');
+     //  Route::get('/user/delete/{user_id}', 'delete')->name('user.delete');
+  });
 
 
 });

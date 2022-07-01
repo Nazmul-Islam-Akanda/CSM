@@ -19,6 +19,7 @@
     <link rel="canonical" href="https://uselooper.com">
     <meta property="og:url" content="https://uselooper.com">
     <meta property="og:site_name" content="Looper - Bootstrap 4 Admin Theme">
+    
     <script type="application/ld+json">
       {
         "name": "Looper - Bootstrap 4 Admin Theme",
@@ -49,6 +50,9 @@
     <link rel="stylesheet" href="https://uselooper.com/assets/stylesheets/theme-dark.min.css" data-skin="dark">
     <link rel="stylesheet" href="assets/stylesheets/custom.css">
     <script>
+
+
+
       var skin = localStorage.getItem('skin') || 'default';
       var disabledSkinStylesheet = document.querySelector('link[data-skin]:not([data-skin="' + skin + '"])');
       // Disable unused skin immediately
@@ -101,6 +105,7 @@
       </main><!-- /.app-main -->
     </div><!-- /.app -->
     <!-- BEGIN BASE JS -->
+
     <script src="https://uselooper.com/assets/vendor/jquery/jquery.min.js"></script>
     <script src="https://uselooper.com/assets/vendor/popper.js/umd/popper.min.js"></script>
     <script src="https://uselooper.com/assets/vendor/bootstrap/js/bootstrap.min.js"></script> <!-- END BASE JS -->
