@@ -14,7 +14,7 @@
               <!-- .page-title-bar -->
               <header class="page-title-bar">
                 <div class="d-flex flex-column flex-md-row">
-           <h1> Create Customer   </h1> 
+           <h1> Edit Customer   </h1> 
                 </div>
 
               </header>
@@ -32,7 +32,8 @@
 @endif
 <!-- error message -->
 
-<form action="{{route('customer.store')}}" method='post'>
+<form action="{{route('customer.update',$customer->id)}}" method='post'>
+    @method('put')
     @csrf
 <!--fluid-container start-->
 <div class="container-fluid">
@@ -43,10 +44,14 @@
     <div class="form-group">
             <label for="exampleFormControlSelect1">Branch</label> <i class="text-danger">*</i>
             <select name="branch" onclick="getArea(this.value)" class="form-control" id="exampleFormControlSelect1">
-            <option value="">Select branch</option>
-            @foreach ($branches as $branch)
-                    <option value="{{$branch->id}}">{{$branch->name}}</option>
-                    @endforeach
+            <option value="null">Select branch</option>
+            @foreach ($branches as $branch)  
+                    <option
+                    @if($branch->id==$customer->branch_id)
+                    selected
+                    @endif 
+                    value="{{$branch->id}}">{{$branch->name}}</option>
+                    @endforeach 
             </select>
     </div>
 </div>
@@ -58,7 +63,7 @@
             <label for="exampleFormControlSelect1">Area</label> <i class="text-danger">*</i>
             <br>
             <select name="area" id="area" style="width: 200px" class="area">
-            
+            <option value="{{$customer->area_id}}">{{$customer->area->area}}</option>
   
     </select>
 
@@ -71,7 +76,7 @@
 
 <div class="mb-3">
     <label for="" class="form-label">Customer Name</label> <i class="text-danger">*</i>
-    <input name="name" placeholder='Full Name' type="text" class="form-control" id="" required>
+    <input name="name" value="{{$customer->name}}" placeholder='Full Name' type="text" class="form-control" id="" required>
   </div>
 </div>
 <!--column end-->
@@ -85,7 +90,7 @@
     <div class="col-md-3">
     <div class="mb-3">
     <label for="" class="form-label">Customer Email</label>
-    <input name="email" placeholder='Email adreess' type="email" class="form-control" id="" required>
+    <input name="email" value="{{$customer->email}}" placeholder='Email adreess' type="email" class="form-control" id="" required>
   </div>
 </div>
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
@@ -94,7 +99,7 @@
 
 <div class="mb-3">
     <label for="" class="form-label">Customer NID</label> 
-    <input name="n_id" placeholder='National ID' type="number" class="form-control" id="" required>
+    <input name="n_id" value="{{$customer->n_id}}" placeholder='National ID' type="number" class="form-control" id="" required>
   </div>
 </div>
 
@@ -104,7 +109,7 @@
 
 <div class="mb-3">
     <label for="" class="form-label">Customer Phone</label> <i class="text-danger">*</i>
-    <input name="phone" placeholder='Contact Number' type="number" class="form-control" id="" required>
+    <input name="phone" value="{{$customer->phone}}" placeholder='Contact Number' type="number" class="form-control" id="" required>
   </div>
 </div>
 <!--column end-->
@@ -118,7 +123,7 @@
     <div class="col-md-3">
     <div class="mb-3">
     <label for="" class="form-label">Customer Address</label>
-    <input name="address" placeholder='Address' type="text" class="form-control" id="" required>
+    <input name="address" value="{{$customer->address}}" placeholder='Address' type="text" class="form-control" id="" required>
   </div>
 </div>
 <!--column end-->
@@ -127,7 +132,7 @@
 
 </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Update</button>
 </form>
 </div>
 <!--fluid-container end-->

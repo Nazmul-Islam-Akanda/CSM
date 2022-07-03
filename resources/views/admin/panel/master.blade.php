@@ -48,7 +48,7 @@
     <!-- BEGIN THEME STYLES -->
     <link rel="stylesheet" href="https://uselooper.com/assets/stylesheets/theme.min.css" data-skin="default">
     <link rel="stylesheet" href="https://uselooper.com/assets/stylesheets/theme-dark.min.css" data-skin="dark">
-    <link rel="stylesheet" href="assets/stylesheets/custom.css">
+    <link rel="stylesheet" href="{{url('css/custom.css')}}">
     <script>
 
 

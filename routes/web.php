@@ -81,12 +81,12 @@ Route::controller(UserController::class)
      Route::get('/shipment/add', 'create')->name('shipment.add');
 //get customers under branch
 Route::get('/customer-list/{branch}','getCustomer');
-//get customer phone under customer
-Route::get('/customer-phone/{customer}','getCustomerPhone');
+//get customer phone & address under customer
+Route::get('/customer-phone-address/{customer}','getCustomerInfo');
 
 
-    //  Route::post('/user/store','store')->name('user.store');
-    //  Route::get('/user/list', 'list')->name('user.list');
+     Route::post('/shipment/store','store')->name('shipment.store');
+     Route::get('/shipment/list', 'list')->name('shipment.list');
     //  Route::get('/user/edit/{user_id}', 'edit')->name('user.edit');
     //  Route::put('/user/update/{user_id}', 'update')->name('user.update');
     //  Route::get('/user/delete/{user_id}', 'delete')->name('user.delete');
@@ -100,10 +100,10 @@ Route::get('/customer-phone/{customer}','getCustomerPhone');
 Route::get('/area-list/{branch}','getArea');
 
       Route::post('/customer/store','store')->name('customer.store');
-     //  Route::get('/user/list', 'list')->name('user.list');
-     //  Route::get('/user/edit/{user_id}', 'edit')->name('user.edit');
-     //  Route::put('/user/update/{user_id}', 'update')->name('user.update');
-     //  Route::get('/user/delete/{user_id}', 'delete')->name('user.delete');
+      Route::get('/customer/list', 'list')->name('customer.list');
+      Route::get('/customer/edit/{customer_id}', 'edit')->name('customer.edit');
+      Route::put('/customer/update/{customer_id}', 'update')->name('customer.update');
+      Route::get('/customer/delete/{customer_id}', 'delete')->name('customer.delete');
   });
 
 

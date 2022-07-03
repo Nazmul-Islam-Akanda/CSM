@@ -209,7 +209,7 @@
                       <a href="{{route('shipment.add')}}" class="menu-link">Add Shipment</a>
                     </li>
                     <li class="menu-item">
-                      <a href="component-icons.html" class="menu-link">Icons</a>
+                      <a href="{{route('shipment.list')}}" class="menu-link">Shipment List</a>
                     </li>
                     <li class="menu-item">
                       <a href="component-rich-media.html" class="menu-link">Rich Media</a>
@@ -242,7 +242,7 @@
                       <a href="{{route('customer.add')}}" class="menu-link">Add Customer</a>
                     </li>
                     <li class="menu-item">
-                      <a href="form-autocompletes.html" class="menu-link">Autocompletes</a>
+                      <a href="{{route('customer.list')}}" class="menu-link">Customer List</a>
                     </li>
                     <li class="menu-item">
                       <a href="form-pickers.html" class="menu-link">Pickers</a>

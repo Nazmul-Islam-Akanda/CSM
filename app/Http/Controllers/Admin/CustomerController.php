@@ -47,4 +47,46 @@ class CustomerController extends Controller
         Toastr::success(' Customer added successfully.');
         return redirect()->back();
     }
+
+    public function list(){
+        $customers=Customer::with('branch','area')->get();
+        return view('admin.panel.pages.customer_list',compact('customers'));
+    }
+
+    public function edit($id){
+        $customer=Customer::find($id);
+        $branches=Branch::all();
+        return view('admin.panel.pages.customer_edit',compact('customer','branches'));
+    }
+
+
+    public function update(Request $request, $id){
+        $customer=Customer::find($id);
+
+        $request->validate([
+            'email'=>'unique:customers',
+            'n_id'=>'unique:customers'
+        ]);
+
+        $customer->update([
+            'branch_id'=>$request->branch,
+            'area_id'=>$request->area,
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'n_id'=>$request->n_id,
+            'phone'=>$request->phone,
+            'address'=>$request->address,
+        ]);
+
+        Toastr::info('Customer updated successfully.');
+        return redirect()->route('customer.list');
+    }
+
+    public function delete($id){
+        Customer::find($id)->delete();
+     
+        Toastr::warning('Customer deleted successfully.');
+        return redirect()->back();
+
+    }
 }
