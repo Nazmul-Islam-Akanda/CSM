@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\AreaController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\BranchController;
+use App\Http\Controllers\Admin\DriverController;
+use App\Http\Controllers\Admin\MissionController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\ShipmentController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -87,9 +89,11 @@ Route::get('/customer-phone-address/{customer}','getCustomerInfo');
 
      Route::post('/shipment/store','store')->name('shipment.store');
      Route::get('/shipment/list', 'list')->name('shipment.list');
-    //  Route::get('/user/edit/{user_id}', 'edit')->name('user.edit');
-    //  Route::put('/user/update/{user_id}', 'update')->name('user.update');
-    //  Route::get('/user/delete/{user_id}', 'delete')->name('user.delete');
+     Route::get('/shipment/edit/{shipment_id}', 'edit')->name('shipment.edit');
+     Route::put('/shipment/update/{shipment_id}', 'update')->name('shipment.update');
+     Route::get('/shipment/delete/{shipment_id}', 'delete')->name('shipment.delete');
+//multiple row status update
+    Route::post('/multi/shipment/multi-update','multiUpdate')->name('multi.shipment');
  });
 
   //customers
@@ -105,6 +109,34 @@ Route::get('/area-list/{branch}','getArea');
       Route::put('/customer/update/{customer_id}', 'update')->name('customer.update');
       Route::get('/customer/delete/{customer_id}', 'delete')->name('customer.delete');
   });
+
+
+
+    //drivers
+    Route::controller(DriverController::class)
+    ->group(function () {
+        Route::get('/driver/add', 'create')->name('driver.add');
+        Route::post('/driver/store','store')->name('driver.store');
+        Route::get('/driver/list', 'list')->name('driver.list');
+        Route::get('/driver/edit/{driver_id}', 'edit')->name('driver.edit');
+        Route::put('/driver/update/{driver_id}', 'update')->name('driver.update');
+        Route::get('/driver/delete/{driver_id}', 'delete')->name('driver.delete');
+    });
+
+    //missions
+    Route::controller(MissionController::class)
+    ->group(function () {
+        Route::get('/mission/add', 'create')->name('mission.add');
+        //get drivers under branch
+Route::get('/driver-list/{branch}','getDriver');
+//get customer phone & address under customer
+Route::get('/driver-phone-address/{driver}','getDriverInfo');
+        // Route::post('/driver/store','store')->name('driver.store');
+        // Route::get('/driver/list', 'list')->name('driver.list');
+        // Route::get('/driver/edit/{driver_id}', 'edit')->name('driver.edit');
+        // Route::put('/driver/update/{driver_id}', 'update')->name('driver.update');
+        // Route::get('/driver/delete/{driver_id}', 'delete')->name('driver.delete');
+    });
 
 
 });

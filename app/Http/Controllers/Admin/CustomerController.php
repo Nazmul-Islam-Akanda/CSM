@@ -64,8 +64,8 @@ class CustomerController extends Controller
         $customer=Customer::find($id);
 
         $request->validate([
-            'email'=>'unique:customers',
-            'n_id'=>'unique:customers'
+            'email'=>"required|unique:customers,email,$id",
+            'n_id'=>"required|unique:customers,n_id,$id",
         ]);
 
         $customer->update([

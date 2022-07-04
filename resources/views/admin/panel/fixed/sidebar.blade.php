@@ -200,7 +200,7 @@
                   <a href="landing-page.html" class="menu-link"><span class="menu-icon fas fa-rocket"></span> <span class="menu-text">Landing Page</span></a>
                 </li><!-- /.menu-item -->
                 <!-- .menu-header -->
-                <li class="menu-header">Interfaces </li><!-- /.menu-header -->
+                <li class="menu-header">Interactions </li><!-- /.menu-header -->
                 <!-- .menu-item -->
                 <li class="menu-item has-child">
                   <a href="#" class="menu-link"><span class="menu-icon oi oi-puzzle-piece"></span> <span class="menu-text">Shipments</span></a> <!-- child menu -->
@@ -254,13 +254,13 @@
                 </li><!-- /.menu-item -->
                 <!-- .menu-item -->
                 <li class="menu-item has-child">
-                  <a href="#" class="menu-link"><span class="menu-icon fas fa-table"></span> <span class="menu-text">Tables</span></a> <!-- child menu -->
+                  <a href="#" class="menu-link"><span class="menu-icon fas fa-table"></span> <span class="menu-text">Drivers</span></a> <!-- child menu -->
                   <ul class="menu">
                     <li class="menu-item">
-                      <a href="table-basic.html" class="menu-link">Basic Table</a>
+                      <a href="{{route('driver.add')}}" class="menu-link">Add Driver</a>
                     </li>
                     <li class="menu-item">
-                      <a href="table-datatables.html" class="menu-link">Datatables</a>
+                      <a href="{{route('driver.list')}}" class="menu-link">Driver List</a>
                     </li>
                     <li class="menu-item">
                       <a href="table-responsive-datatables.html" class="menu-link">Responsive Datatables</a>
@@ -272,27 +272,10 @@
                 </li><!-- /.menu-item -->
                 <!-- .menu-item -->
                 <li class="menu-item has-child">
-                  <a href="#" class="menu-link"><span class="menu-icon oi oi-bar-chart"></span> <span class="menu-text">Collections</span></a> <!-- child menu -->
+                  <a href="#" class="menu-link"><span class="menu-icon oi oi-bar-chart"></span> <span class="menu-text">Missions</span></a> <!-- child menu -->
                   <ul class="menu">
-                    <li class="menu-item has-child">
-                      <a href="#" class="menu-link">Chart.js</a> <!-- grand child menu -->
-                      <ul class="menu">
-                        <li class="menu-item">
-                          <a href="collection-chartjs-line.html" class="menu-link">Line</a>
-                        </li>
-                        <li class="menu-item">
-                          <a href="collection-chartjs-bar.html" class="menu-link">Bar</a>
-                        </li>
-                        <li class="menu-item">
-                          <a href="collection-chartjs-radar-scatter.html" class="menu-link">Radar & Scatter</a>
-                        </li>
-                        <li class="menu-item">
-                          <a href="collection-chartjs-others.html" class="menu-link">Others</a>
-                        </li>
-                      </ul><!-- /grand child menu -->
-                    </li>
                     <li class="menu-item">
-                      <a href="collection-flot-charts.html" class="menu-link">Flot</a>
+                      <a href="{{route('mission.add')}}" class="menu-link">Add Mission</a>
                     </li>
                     <li class="menu-item">
                       <a href="collection-inline-charts.html" class="menu-link">Inline Charts</a>

@@ -15,7 +15,7 @@
               <!-- .page-title-bar -->
               <header class="page-title-bar">
                 <div class="d-flex flex-column flex-md-row">
-           <h1> Create Shipment   </h1> 
+           <h1> Edit Shipment   </h1> 
                 </div>
 
               </header>
@@ -25,7 +25,8 @@
 
 
 
-<form action="{{route('shipment.store')}}" method='post'>
+<form action="{{route('shipment.update',$shipment->id)}}" method='post'>
+    @method('put')
     @csrf
 <!--fluid-container start-->
 <div class="container-fluid">
@@ -33,10 +34,10 @@
 <label class="col-xs-3">Shipment Type</label> <i class="text-danger">*</i>
     <div class="col-xs-9">
             <div class="form-check">
+                    <label class="radio-inline">
+                <input type="radio" name="type"  {{ ($shipment->type) == 'Door to Door' ? 'checked' : '' }}  value="Door to Door" >Pickup (For door to door delivery)</label>
                 <label class="radio-inline">
-                    <input type="radio" name="type" value="Door to Door" checked="&quot;checked&quot;">Pickup (For door to door delivery) </label>
-                <label class="radio-inline">
-                    <input type="radio" name="type" value="Branch to Branch" >Drop off (For delivery from branch directly)</label>
+                <input type="radio" name="type"  {{ ($shipment->type) == 'Branch to Branch' ? 'checked' : '' }}  value="Branch to Branch" >Drop off (For delivery from branch directly)</label>
             </div>
 
 
@@ -47,11 +48,14 @@
     <div class="form-group">
             <label for="exampleFormControlSelect1">Branch</label> <i class="text-danger">*</i><br>
             <select name="branch" onchange="getCustomerArea(this.value)" style="width: 200px" id="nameid">
-            <option value=""></option>
-            @foreach ($branches as $branch)
-                    <option value="{{$branch->id}}">{{$branch->name}}</option>
-                    @endforeach
-  
+
+            @foreach ($branches as $branch)  
+                    <option
+                    @if($branch->id==$shipment->branch_id)
+                    selected
+                    @endif 
+                    value="{{$branch->id}}">{{$branch->name}}</option>
+                    @endforeach 
     </select>
 
     </div>
@@ -61,7 +65,7 @@
 <div class="col-md-3">
 <div class="mb-3">
     <label for="" class="form-label">Shipping Date</label> <i class="text-danger">*</i>
-    <input name="date" type="date" class="form-control" id="" required>
+    <input name="date" value="{{$shipment->date}}" type="date" class="form-control" id="" required>
   </div>
 </div>
 
@@ -70,7 +74,7 @@
 <div class="col-md-3">
 <div class="mb-3">
     <label for="" class="form-label">Collection Time</label> <i class="text-danger">*</i>
-    <input name="time" type="time" class="form-control" id="" required>
+    <input name="time" value="{{$shipment->time}}" type="time" class="form-control" id="" required>
   </div>
 </div>
 <!--column end-->
@@ -84,7 +88,9 @@
     <div class="form-group">
             <label for="exampleFormControlSelect1">Customer/Sender</label> <i class="text-danger">*</i> <a href="{{route('customer.add')}}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M4 3h16a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm7 8H7v2h4v4h2v-4h4v-2h-4V7h-2v4z"/></svg>Add</a>
             <select name="customer" onchange="getCustomerData(this.value)" id="customer" style="width: 200px" class="customer">    
-  
+            
+            <option value="{{$shipment->customer_id}}">{{$shipment->customer->name}}</option>
+
     </select>
 
     </div>
@@ -94,7 +100,7 @@
 <div class="col-md-3">
 <div class="mb-3">
     <label for="" class="form-label"> Customer Phone</label> <i class="text-danger">*</i>
-    <input type="number" class="form-control" id="phone" >
+    <input type="number" value="{{$shipment->customer->phone}}" class="form-control" id="phone" >
   </div>
 </div>
 
@@ -103,7 +109,7 @@
 <div class="col-md-3">
 <div class="mb-3">
     <label for="" class="form-label">Customer Address</label> <i class="text-danger">*</i>
-    <input  type="text" class="form-control" id="address">
+    <input  type="text" value="{{$shipment->customer->address}}" class="form-control" id="address">
   </div>
 </div>
 <!--column end-->
@@ -117,7 +123,7 @@
     <div class="col-md-3">
 <div class="mb-3">
     <label for="" class="form-label"> Receiver Name</label> <i class="text-danger">*</i>
-    <input name="receiver_name" type="text" class="form-control" id="" required>
+    <input name="receiver_name" value="{{$shipment->receiver_name}}" type="text" class="form-control" id="" required>
   </div>
 </div>
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
@@ -125,7 +131,7 @@
 <div class="col-md-3">
 <div class="mb-3">
     <label for="" class="form-label"> Receiver Phone</label> <i class="text-danger">*</i>
-    <input name="receiver_phone" type="number" class="form-control" id="" required>
+    <input name="receiver_phone" value="{{$shipment->receiver_phone}}" type="number" class="form-control" id="" required>
   </div>
 </div>
 
@@ -134,7 +140,7 @@
 <div class="col-md-3">
 <div class="mb-3">
     <label for="" class="form-label">Receiver Address</label> <i class="text-danger">*</i>
-    <input name="receiver_address" type="text" class="form-control" id="" required>
+    <input name="receiver_address" value="{{$shipment->receiver_address}}" type="text" class="form-control" id="" required>
   </div>
 </div>
 <!--column end-->
@@ -149,10 +155,14 @@
     <div class="form-group">
             <label for="exampleFormControlSelect1">To Branch</label> <i class="text-danger">*</i><br>
             <select name="to_branch" onchange="getToArea(this.value)" style="width: 200px" id="to_branch">
-            <option value=""></option>
-            @foreach ($branches as $branch)
-                    <option value="{{$branch->id}}">{{$branch->name}}</option>
-                    @endforeach
+           
+                    @foreach ($branches as $branch)  
+                    <option
+                    @if($branch->id==$shipment->to_branch_id)
+                    selected
+                    @endif 
+                    value="{{$branch->id}}">{{$branch->name}}</option>
+                    @endforeach 
   
     </select>
 
@@ -164,8 +174,14 @@
 <div class="form-group">
             <label for="exampleFormControlSelect1">To Area</label> <i class="text-danger">*</i><br>
             <select name="to_area" style="width: 200px" class="to_area" id="to_area">
-            <option value=""></option>
-                   
+          
+            @foreach ($areas as $area)  
+                    <option
+                    @if($area->id==$shipment->to_area_id)
+                    selected
+                    @endif 
+                    value="{{$area->id}}">{{$area->area}}</option>
+                    @endforeach 
   
     </select>
 
@@ -178,10 +194,14 @@
 <div class="form-group">
             <label for="exampleFormControlSelect1">From Area</label> <i class="text-danger">*</i><br>
             <select name="from_area" id="from_area" style="width: 200px" class="from_area_search">
-            <option value=""></option>
            
-                    <option value=""></option>
-                 
+            @foreach ($areas as $area)  
+                    <option
+                    @if($area->id==$shipment->from_area_id)
+                    selected
+                    @endif 
+                    value="{{$area->id}}">{{$area->area}}</option>
+                    @endforeach   
   
     </select>
 
@@ -199,10 +219,9 @@
     <div class="form-group">
             <label for="exampleFormControlSelect1">Payment Type</label> <i class="text-danger">*</i>
             <select name="payment_type" class="form-control" id="exampleFormControlSelect1">
-            <option value="">Select Payment Option</option>
-        
-                    <option>Prepaid</option>
-                    <option>Postpaid</option>
+
+                    <option {{ ($shipment->pay_type) == 'Prepaid' ? 'selected' : '' }}  value="Prepaid">Prepaid</option>
+            <option {{ ($shipment->pay_type) == 'Postpaid' ? 'selected' : '' }}  value="Postpaid">Postpaid</option>
             
             </select>
     </div>
@@ -214,11 +233,10 @@
 <div class="form-group">
             <label for="exampleFormControlSelect1">Payment Method</label> <i class="text-danger">*</i>
             <select name="pay_method" class="form-control" id="exampleFormControlSelect1">
-            <option value="" >Select Payment Method</option>
-        
-                    <option >Cash Payment</option>
-                    <option >Due Payment</option>
-                    <option >Invoice Payment</option>
+
+                    <option {{ ($shipment->pay_method) == 'Cash Payment' ? 'selected' : '' }}  value="Cash Payment">Cash Payment</option>
+            <option {{ ($shipment->pay_method) == 'Due Payment' ? 'selected' : '' }}  value="Due Payment">Due Payment</option>
+            <option {{ ($shipment->pay_method) == 'Invoice Payment' ? 'selected' : '' }}  value="Invoice Payment">Invoice Payment</option>
             
             </select>
     </div>
@@ -227,16 +245,7 @@
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
 
 <div class="col-md-3">
-<div class="form-group">
-            <label for="exampleFormControlSelect1">Payment Status</label> <i class="text-danger">*</i>
-            <select name="pay_status" class="form-control" id="exampleFormControlSelect1">
-            <option value="">Select Payment Status</option>
-        
-                    <option>Paid</option>
-                    <option>Unpaid</option>
-            
-            </select>
-    </div>
+
 </div>
 <!--column end-->
 </div>
@@ -272,7 +281,7 @@
     <div class="col-md-3">
 <div class="mb-3">
     <label for="" class="form-label"> Product Description</label> <i class="text-danger">*</i>
-    <input name="product_description" type="text" class="form-control" id="" required>
+    <input name="product_description" value="{{$shipment->product_description}}" type="text" class="form-control" id="" required>
   </div>
 </div>
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
@@ -280,7 +289,7 @@
 <div class="col-md-3">
 <div class="mb-3">
     <label for="" class="form-label"> Quantity</label> <i class="text-danger">*</i>
-    <input name="quantity" type="number" class="form-control" id="" required>
+    <input name="quantity" value="{{$shipment->quantity}}" type="number" class="form-control" id="" required>
   </div>
 </div>
 
@@ -289,7 +298,7 @@
 <div class="col-md-3">
 <div class="mb-3">
     <label for="" class="form-label">Shipping Cost</label> <i class="text-danger">*</i>
-    <input name="shipping_cost" type="text" class="form-control" id="" required>
+    <input name="shipping_cost" value="{{$shipment->shipping_cost}}" type="text" class="form-control" id="" required>
   </div>
 </div>
 <!--column end-->
@@ -298,7 +307,7 @@
 
 </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Update</button>
 </form>
 </div>
 <!--fluid-container end-->
