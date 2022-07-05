@@ -212,7 +212,7 @@
                       <a href="{{route('shipment.list')}}" class="menu-link">Shipment List</a>
                     </li>
                     <li class="menu-item">
-                      <a href="component-rich-media.html" class="menu-link">Rich Media</a>
+                      <a href="{{route('shipment.list.return')}}" class="menu-link">Return Shipment List</a>
                     </li>
                     <li class="menu-item">
                       <a href="component-list-views.html" class="menu-link">List Views</a>
@@ -278,7 +278,7 @@
                       <a href="{{route('mission.add')}}" class="menu-link">Add Mission</a>
                     </li>
                     <li class="menu-item">
-                      <a href="collection-inline-charts.html" class="menu-link">Inline Charts</a>
+                      <a href="{{route('mission.list')}}" class="menu-link">Mission List</a>
                     </li>
                     <li class="menu-item">
                       <a href="collection-jqvmap.html" class="menu-link">Vector Map</a>

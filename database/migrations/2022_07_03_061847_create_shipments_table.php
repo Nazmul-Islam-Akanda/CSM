@@ -29,11 +29,12 @@ return new class extends Migration
             $table->string('payment_type',20);
             $table->string('pay_method',20);
             $table->string('pay_status',20);
-            $table->string('shipment_id');
+            $table->string('shipment_id')->unique();
             $table->string('product_description',500);
             $table->integer('quantity');
             $table->integer('shipping_cost');
             $table->string('status',30);
+            $table->string('shipment_direction',30)->default('on_delivery');
             $table->timestamps();
         });
     }

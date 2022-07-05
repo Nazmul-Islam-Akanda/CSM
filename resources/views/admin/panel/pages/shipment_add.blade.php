@@ -45,7 +45,7 @@
     <!--column start-->
     <div class="col-md-3">
     <div class="form-group">
-            <label for="exampleFormControlSelect1">Branch</label> <i class="text-danger">*</i><br>
+            <label for="exampl eFormControlSelect1">Branch</label> <i class="text-danger">*</i><br>
             <select name="branch" onchange="getCustomerArea(this.value)" style="width: 200px" id="nameid">
             <option value=""></option>
             @foreach ($branches as $branch)

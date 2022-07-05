@@ -82,8 +82,22 @@
 </div>
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
 <div class="col-md-3">
+<div class="mb-3">
 <label for="" class="form-label">Owner Phone</label> <i class="text-danger">*</i>
     <input name="owner_phone" value="{{$branch->owner_phone}}" placeholder='' type="number" class="form-control" id="" required>
+  </div>
+</div>
+<!--column end-->
+</div>
+<!--row end-->
+
+<!--row start-->
+<div class="row">
+    <!--column start-->
+    <div class="col-md-3">
+<div class="mb-3">
+    <label for="" class="form-label">Shipment ID Prefix</label> <i class="text-danger">*</i>
+    <input name="ship_prefix" value="{{$branch->ship_prefix}}" placeholder='Enter shipment id prefix for your branch' type="string" class="form-control" id="" required>
   </div>
 </div>
 <!--column end-->

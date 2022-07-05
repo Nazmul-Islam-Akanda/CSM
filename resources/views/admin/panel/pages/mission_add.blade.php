@@ -25,7 +25,7 @@
 
 
 
-<form action="{{route('shipment.store')}}" method='post'>
+<form action="{{route('mission.store')}}" method='post'>
     @csrf
 <!--fluid-container start-->
 <div class="container-fluid">
@@ -138,7 +138,7 @@
                     <table class="table">
                         <thead>
                           <tr>
-                            <th scope="col">Shipments</th>
+                            <th scope="col">Shipments ID</th>
                             <th scope="col">
                               <a href="javascript:void(0);" class="add_button btn btn"  title="add field" style="background-color:#53B5D5">Add More</a>
                             </th>
@@ -181,6 +181,8 @@
             placeholder: "Select a branch",
             allowClear: true
         });
+
+       
 </script>
         
 
@@ -239,26 +241,29 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function(){
-      var max_field = 10; 
-      var add_button = $('.add_button'); 
-      var field_wrapper = $('.field_wrapper'); 
-      var html_field = '<div class="delete "><select name="shipment[]" class="form-control">@foreach ($shipments as $shipment) <option value="{{$shipment->id}}">{{$shipment->shipment_id}}</option> @endforeach</select>   <br>   <a href="javascript:void(0);" class="remove_button btn btn-danger">Remove</a></div> &nbsp;&nbsp;'; 
+      var max_field = 100; //Input fields increment limitation
+      var add_button = $('.add_button'); //Add button selector
+      var field_wrapper = $('.field_wrapper'); //Input field wrapper
+      var html_field = '<div class="delete ">  <input name="shipment_id[]" type="string" class="form-control" id="" >   <br>   <a href="javascript:void(0);" class="remove_button btn btn-danger">Remove</a></div> &nbsp;&nbsp; '; 
       var x = 1; 
       
-      
+       //Once add button is clicked
       $(add_button).click(function(){
+        //Check maximum number of input fields
           if(x < max_field){ 
-              x++;
-              $(field_wrapper).append(html_field); 
+              x++;//Increment field counter
+              $(field_wrapper).append(html_field); //Add field html
           }
       });
       
-      
+         //Once remove button is clicked
       $(field_wrapper).on('click', '.remove_button', function(e){
           e.preventDefault();
-          $(this).closest('.delete').remove();
-          x--; 
+          $(this).closest('.delete').remove(); //Remove field html
+          x--; //Decrement field counter
       });
+
+    
   });
   </script>
         

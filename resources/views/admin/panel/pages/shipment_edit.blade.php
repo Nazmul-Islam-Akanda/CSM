@@ -267,7 +267,16 @@
                                 </div>
                             </div>
 
+ <br><br>
 
+<label class="col-xs-3">Shipment Direction</label> <i class="text-danger">*</i>
+    <div class="col-xs-9">
+            <div class="form-check">
+                    <label class="radio-inline">
+                <input type="radio" name="shipment_direction"  {{ ($shipment->shipment_direction) == 'on_delivery' ? 'checked' : '' }}  value="on_delivery" >On Delivery</label>
+                <label class="radio-inline">
+                <input type="radio" name="shipment_direction"  {{ ($shipment->shipment_direction) == 'return' ? 'checked' : '' }}  value="return" >Return</label>
+            </div>
 
 
 

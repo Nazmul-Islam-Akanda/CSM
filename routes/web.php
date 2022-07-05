@@ -94,6 +94,9 @@ Route::get('/customer-phone-address/{customer}','getCustomerInfo');
      Route::get('/shipment/delete/{shipment_id}', 'delete')->name('shipment.delete');
 //multiple row status update
     Route::post('/multi/shipment/multi-update','multiUpdate')->name('multi.shipment');
+
+    //return shipment list
+    Route::get('/return/shipment/list', 'returnList')->name('shipment.list.return');
  });
 
   //customers
@@ -131,8 +134,8 @@ Route::get('/area-list/{branch}','getArea');
 Route::get('/driver-list/{branch}','getDriver');
 //get customer phone & address under customer
 Route::get('/driver-phone-address/{driver}','getDriverInfo');
-        // Route::post('/driver/store','store')->name('driver.store');
-        // Route::get('/driver/list', 'list')->name('driver.list');
+        Route::post('/mission/store','store')->name('mission.store');
+        Route::get('/mission/list', 'list')->name('mission.list');
         // Route::get('/driver/edit/{driver_id}', 'edit')->name('driver.edit');
         // Route::put('/driver/update/{driver_id}', 'update')->name('driver.update');
         // Route::get('/driver/delete/{driver_id}', 'delete')->name('driver.delete');

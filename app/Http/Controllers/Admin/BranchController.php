@@ -17,7 +17,8 @@ class BranchController extends Controller
 
         $request->validate([
             'email'=>'unique:branches',
-            'owner_nid'=>'unique:branches'
+            'owner_nid'=>'unique:branches',
+            'ship_prefix' => 'max:3'
         ]);
 
         Branch::create([
@@ -27,6 +28,7 @@ class BranchController extends Controller
             'address'=>$request->address,
             'owner_name'=>$request->owner_name,
             'owner_phone'=>$request->owner_phone,
+            'ship_prefix'=>$request->ship_prefix,
         ]);
 
         Toastr::success(' Branch added successfully.');
@@ -50,6 +52,7 @@ class BranchController extends Controller
         $request->validate([
             'email'=>"required|unique:branches,email,$id",
             'owner_nid'=>"required|unique:branches,owner_nid,$id",
+            'ship_prefix' => 'max:3'
         ]);
 
         $branch->update([
@@ -59,6 +62,7 @@ class BranchController extends Controller
             'address'=>$request->address,
             'owner_name'=>$request->owner_name,
             'owner_phone'=>$request->owner_phone,
+            'ship_prefix'=>$request->ship_prefix,
         ]);
 
         Toastr::info('Branch updated successfully.');

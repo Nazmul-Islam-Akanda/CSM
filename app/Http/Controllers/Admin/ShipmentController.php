@@ -40,12 +40,19 @@ class ShipmentController extends Controller
 
 public function store(Request $request){
 
+    $request->validate([
+        'shipment_id'=>'unique:shipments'
+    ]);
 
-        // dd($request->branch);
-        $prefix="NP".$request->branch;
+    $ship_prefix=Branch::where('id',$request->branch)->pluck('ship_prefix');
+        // dd($ship_prefix[0]);
+        $prefix="NP".$ship_prefix[0];
         // dd($prefix);
-        $ship_id=IdGenerator::generate(['table' => 'shipments', 'length' => 8, 'prefix' => $prefix]);
-        // dd($ship_id);
+        // $ship_id=IdGenerator::generate(['table' => 'shipments', 'length' => 6, 'prefix' => date('ymd')]);
+        // $ymd=date('ymd');
+        // dd($ymd);
+        $shipping_id=$prefix.Str::random(3);
+        // dd($shipping_id);
 
         Shipment::create([
           
@@ -63,7 +70,7 @@ public function store(Request $request){
             'payment_type'=>$request->payment_type,
             'pay_method'=>$request->pay_method,
             'pay_status'=>$request->pay_status,
-            'shipment_id'=>$ship_id,
+            'shipment_id'=>$shipping_id,
             'product_description'=>$request->product_description,
             'quantity'=>$request->quantity,
             'shipping_cost'=>$request->shipping_cost,
@@ -75,7 +82,7 @@ public function store(Request $request){
     }
 
     public function list(){
-        $shipments=Shipment::with('branch','area','customer')->paginate(10);;
+        $shipments=Shipment::with('branch','area','customer')->where('shipment_direction','on_delivery')->paginate(10);;
         return view('admin.panel.pages.shipment_list',compact('shipments'));
     }
 
@@ -128,6 +135,7 @@ public function store(Request $request){
             'product_description'=>$request->product_description,
             'quantity'=>$request->quantity,
             'shipping_cost'=>$request->shipping_cost,
+            'shipment_direction'=>$request->shipment_direction,
         ]);
 
         Toastr::info('Shipment updated successfully.');
@@ -140,6 +148,12 @@ public function store(Request $request){
         Toastr::warning('Shipment deleted successfully.');
         return redirect()->back();
 
+    }
+
+
+    public function returnList(){
+        $shipments=Shipment::with('branch','area','customer')->where('shipment_direction','return')->paginate(10);;
+        return view('admin.panel.pages.shipment_return_list',compact('shipments'));
     }
 
 }

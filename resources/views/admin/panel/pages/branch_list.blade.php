@@ -25,7 +25,7 @@
     <tr style='background-color:#00ffff'>
       <th scope="col">#</th>
       <th scope="col">Branch Name</th>
-      <th scope="col">Branch ID</th>
+      <th scope="col">Shipment ID Prefix</th>
       <th scope="col">Email</th>
       <th scope="col">Owner NID</th>
       <th scope="col">Office Address</th>
@@ -41,7 +41,7 @@
     <tr>
       <th scope="row">{{$key+1}}</th>
       <td>{{$branch->name}}</td>
-      <td>{{$branch->id}}</td>
+      <td>{{$branch->ship_prefix}}</td>
       <td>{{$branch->email}}</td>
       <td>{{$branch->owner_nid}}</td>
       <td>{{$branch->address}}</td>

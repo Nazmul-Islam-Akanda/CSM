@@ -14,7 +14,7 @@
               <!-- .page-title-bar -->
               <header class="page-title-bar">
                 <div class="d-flex flex-column flex-md-row">
-           <h1>Shipment list  </h1> 
+           <h1>Return Shipment list  </h1> 
                 </div>
                 <a href="{{ route('shipment.add') }}"><button class="btn btn-primary">Create Shipment</button></a>
               </header>
