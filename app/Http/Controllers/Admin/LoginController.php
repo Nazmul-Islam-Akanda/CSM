@@ -19,6 +19,7 @@ class LoginController extends Controller
         // dd($request->all());
         $userInfo=$request->except('_token');
 // dd($userInfo);
+// dd(Auth::attempt($userInfo));
         if(Auth::attempt($userInfo)){
 
             Toastr::success(' Login successfully.');

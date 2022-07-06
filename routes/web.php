@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Branch;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AreaController;
 use App\Http\Controllers\Admin\UserController;
@@ -10,6 +11,8 @@ use App\Http\Controllers\Admin\MissionController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\ShipmentController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\Transaction\IncomeController;
+use App\Http\Controllers\Admin\Transaction\ExpenseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,7 +43,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
 //dashboard
-route::get('/admin/dashboard',[DashboardController::class,'dashboard'])->name('admin.dashboard');
+route::get('/dashboard',[DashboardController::class,'dashboard'])->name('admin.dashboard');
 
 //branch
 Route::controller(BranchController::class)
@@ -140,5 +143,38 @@ Route::get('/driver-phone-address/{driver}','getDriverInfo');
         Route::get('/mission/delete/{mission_id}', 'delete')->name('mission.delete');
     });
 
+
+// Transactions
+      //Income
+      Route::controller(IncomeController::class)
+      ->group(function () {
+
+        //add select via customer
+Route::get('/transaction/income/selected/via/customer/add', function () {
+    $branches=Branch::all();
+    return view('admin.panel.pages.income_via.income_from_customer_add',compact('branches'));
+})->name('transaction.income.add.from.customer');
+
+          Route::get('/transaction/income/list', 'list')->name('transaction.income.list');
+             Route::get('/transaction/income/add', 'create')->name('transaction.income.add');
+//get shipment under branch
+Route::get('/shipment-list/{from_branch}','getShipment');
+          Route::post('/transaction/income/store','store')->name('transaction.income.store');
+          Route::get('/transaction/income/edit/{income_id}', 'edit')->name('transaction.income.edit');
+          Route::put('/transaction/income/update/{income_id}', 'update')->name('transaction.income.update');
+          Route::get('/transaction/income/delete/{income_id}', 'delete')->name('transaction.income.delete');
+      });
+      //Expense
+      Route::controller(ExpenseController::class)
+      ->group(function () {
+          Route::get('/transaction/excense/list', 'list')->name('transaction.expense.list');
+             Route::get('/transaction/excense/add', 'create')->name('transaction.expense.add');
+// //get shipment under branch
+// Route::get('/shipment-list/{from_branch}','getShipment');
+//           Route::post('/transaction/income/store','store')->name('transaction.income.store');
+//           Route::get('/transaction/income/edit/{income_id}', 'edit')->name('transaction.income.edit');
+//           Route::put('/transaction/income/update/{income_id}', 'update')->name('transaction.income.update');
+//           Route::get('/transaction/income/delete/{income_id}', 'delete')->name('transaction.income.delete');
+      });
 
 });

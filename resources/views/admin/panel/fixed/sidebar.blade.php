@@ -275,44 +275,13 @@
                 </li><!-- /.menu-item -->
                 <!-- .menu-item -->
                 <li class="menu-item has-child">
-                  <a href="#" class="menu-link"><span class="menu-icon oi oi-list-rich"></span> <span class="menu-text">Level Menu</span></a> <!-- child menu -->
+                  <a href="#" class="menu-link"><span class="menu-icon oi oi-list-rich"></span> <span class="menu-text">Transactions</span></a> <!-- child menu -->
                   <ul class="menu">
                     <li class="menu-item">
-                      <a href="#" class="menu-link">Menu Item</a>
-                    </li>
-                    <li class="menu-item has-child">
-                      <a href="#" class="menu-link">Menu Item</a> <!-- grand child menu -->
-                      <ul class="menu">
-                        <li class="menu-item">
-                          <a href="#" class="menu-link">Child Item</a>
-                        </li>
-                        <li class="menu-item">
-                          <a href="#" class="menu-link">Child Item</a>
-                        </li>
-                        <li class="menu-item has-child">
-                          <a href="#" class="menu-link">Child Item</a> <!-- grand child menu -->
-                          <ul class="menu">
-                            <li class="menu-item">
-                              <a href="#" class="menu-link">Grand Child Item</a>
-                            </li>
-                            <li class="menu-item">
-                              <a href="#" class="menu-link">Grand Child Item</a>
-                            </li>
-                            <li class="menu-item">
-                              <a href="#" class="menu-link">Grand Child Item</a>
-                            </li>
-                            <li class="menu-item">
-                              <a href="#" class="menu-link">Grand Child Item</a>
-                            </li>
-                          </ul><!-- /grand child menu -->
-                        </li>
-                        <li class="menu-item">
-                          <a href="#" class="menu-link">Child Item</a>
-                        </li>
-                      </ul><!-- /grand child menu -->
+                      <a href="{{route('transaction.income.list')}}" class="menu-link">Income</a>
                     </li>
                     <li class="menu-item">
-                      <a href="#" class="menu-link">Menu Item</a>
+                      <a href="{{route('transaction.expense.list')}}" class="menu-link">Expense</a>
                     </li>
                   </ul><!-- /child menu -->
                 </li><!-- /.menu-item -->
