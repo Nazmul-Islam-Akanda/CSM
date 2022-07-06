@@ -244,12 +244,6 @@
                     <li class="menu-item">
                       <a href="{{route('customer.list')}}" class="menu-link">Customer List</a>
                     </li>
-                    <li class="menu-item">
-                      <a href="form-pickers.html" class="menu-link">Pickers</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="form-editors.html" class="menu-link">Editors</a>
-                    </li>
                   </ul><!-- /child menu -->
                 </li><!-- /.menu-item -->
                 <!-- .menu-item -->
@@ -261,12 +255,6 @@
                     </li>
                     <li class="menu-item">
                       <a href="{{route('driver.list')}}" class="menu-link">Driver List</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="table-responsive-datatables.html" class="menu-link">Responsive Datatables</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="table-filters-datatables.html" class="menu-link">Filter Columns</a>
                     </li>
                   </ul><!-- /child menu -->
                 </li><!-- /.menu-item -->

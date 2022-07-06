@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('mission_details', function (Blueprint $table) {
             $table->id();
-            $table->string('mission_id');
+            $table->foreignId('mission_id')->constrained()->onDelete('cascade');
             $table->string('shipping_id');
             $table->timestamps();
         });

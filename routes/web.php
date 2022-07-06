@@ -136,9 +136,8 @@ Route::get('/driver-list/{branch}','getDriver');
 Route::get('/driver-phone-address/{driver}','getDriverInfo');
         Route::post('/mission/store','store')->name('mission.store');
         Route::get('/mission/list', 'list')->name('mission.list');
-        // Route::get('/driver/edit/{driver_id}', 'edit')->name('driver.edit');
-        // Route::put('/driver/update/{driver_id}', 'update')->name('driver.update');
-        // Route::get('/driver/delete/{driver_id}', 'delete')->name('driver.delete');
+        Route::get('/mission/close/{mission_id}', 'close')->name('mission.close');
+        Route::get('/mission/delete/{mission_id}', 'delete')->name('mission.delete');
     });
 
 

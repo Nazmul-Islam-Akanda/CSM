@@ -14,13 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('missions', function (Blueprint $table) {
-            $table->id();
+            $table->id()->constrained('mission_details')->onDelete('cascade');
             $table->string('branch_id');
             $table->string('date',50);
             $table->string('time',50);
             $table->string('driver_id');
             $table->string('car_no',500);
             $table->string('to_branch_id');
+            $table->string('status',20)->default('Running');
             $table->timestamps();
         });
     }

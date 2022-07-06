@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('branch_id');
             $table->string('name',50);
             $table->integer('phone');
-            $table->string('n_id',50);
+            $table->string('n_id',50)->unique();
             $table->string('address',500);
             $table->timestamps();
         });

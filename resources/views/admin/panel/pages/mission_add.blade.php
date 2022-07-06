@@ -23,7 +23,17 @@
 
               <h5>Mission Information</h5>
 
-
+<!-- error message -->
+@if($errors->any())
+<div class='alert alert-danger' role="alert">
+  <ul>
+    @foreach($errors->all() as $error)
+    <li>{{$error}}</li>
+    @endforeach
+  </ul>
+</div>
+@endif
+<!-- error message -->
 
 <form action="{{route('mission.store')}}" method='post'>
     @csrf

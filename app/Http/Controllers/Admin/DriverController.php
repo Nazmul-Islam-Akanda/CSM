@@ -18,7 +18,7 @@ class DriverController extends Controller
     public function store(Request $request){
 
         $request->validate([
-            'n_id'=>'unique:customers'
+            'n_id'=>'unique:drivers'
         ]);
 
         // dd($request->all());
