@@ -155,6 +155,12 @@ Route::get('/transaction/income/selected/via/customer/add', function () {
     return view('admin.panel.pages.income_via.income_from_customer_add',compact('branches'));
 })->name('transaction.income.add.from.customer');
 
+       //add select via branch
+       Route::get('/transaction/income/selected/via/branch/add', function () {
+        $branches=Branch::all();
+        return view('admin.panel.pages.income_via.income_from_branch_add',compact('branches'));
+    })->name('transaction.income.add.from.branch');
+
           Route::get('/transaction/income/list', 'list')->name('transaction.income.list');
              Route::get('/transaction/income/add', 'create')->name('transaction.income.add');
 //get shipment under branch
@@ -169,12 +175,10 @@ Route::get('/shipment-list/{from_branch}','getShipment');
       ->group(function () {
           Route::get('/transaction/excense/list', 'list')->name('transaction.expense.list');
              Route::get('/transaction/excense/add', 'create')->name('transaction.expense.add');
-// //get shipment under branch
-// Route::get('/shipment-list/{from_branch}','getShipment');
-//           Route::post('/transaction/income/store','store')->name('transaction.income.store');
-//           Route::get('/transaction/income/edit/{income_id}', 'edit')->name('transaction.income.edit');
-//           Route::put('/transaction/income/update/{income_id}', 'update')->name('transaction.income.update');
-//           Route::get('/transaction/income/delete/{income_id}', 'delete')->name('transaction.income.delete');
+          Route::post('/transaction/excense/store','store')->name('transaction.expense.store');
+          Route::get('/transaction/excense/edit/{expense_id}', 'edit')->name('transaction.expense.edit');
+          Route::put('/transaction/excense/update/{expense_id}', 'update')->name('transaction.expense.update');
+          Route::get('/transaction/excense/delete/{expense_id}', 'delete')->name('transaction.expense.delete');
       });
 
 });

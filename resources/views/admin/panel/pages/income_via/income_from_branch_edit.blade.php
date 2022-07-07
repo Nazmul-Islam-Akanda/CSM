@@ -14,7 +14,7 @@
               <!-- .page-title-bar -->
               <header class="page-title-bar">
                 <div class="d-flex flex-column flex-md-row">
-                <a href="{{route('transaction.income.list')}}" class="btn" style="background-color:lightgray; border-radius:10px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zm0 9V8l-4 4 4 4v-3h4v-2h-4z" fill="rgba(34,128,123,1)"/></svg></a>  &nbsp;&nbsp;   <h1> Edit Income   </h1> 
+                <a href="{{route('transaction.income.list')}}" class="btn" style="background-color:lightgray; border-radius:10px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zm0 9V8l-4 4 4 4v-3h4v-2h-4z" fill="rgba(34,128,123,1)"/></svg></a>  &nbsp;&nbsp;   <h1> Edit Income from Branch  </h1> 
                 </div>
 
               </header>
@@ -43,7 +43,7 @@
     <div class="col-md-3">
     <div class="form-group">
             <label for="exampleFormControlSelect1">Beneficiary Branch</label> <i class="text-danger">*</i>
-            <select name="branch" onclick="getCustomer(this.value)" class="form-control" id="exampleFormControlSelect1">
+            <select name="branch" class="form-control" id="exampleFormControlSelect1">
             <option value="">Select branch</option>
            
             @foreach ($branches as $branch)  
@@ -63,7 +63,7 @@
 <div class="form-group">
             <label for="exampleFormControlSelect1">From Customer</label> 
             <br>
-            <select name="customer" id="customer" onchange="getCustomerData(this.value)" style="width: 200px" class="customer">
+            <select disabled name="customer" id="customer"  style="width: 200px" class="customer">
             
             <option value="{{$income->customer_id}}">{{$income->customer->name ?? ""}}</option>
     </select>
@@ -77,7 +77,7 @@
 
 <div class="mb-3">
     <label for="" class="form-label">Customer NID</label> 
-    <input  placeholder='National ID' value="{{$income->customer->n_id ?? ''}}" type="number" class="form-control" id="nid">
+    <input disabled placeholder='National ID' value="{{$income->customer->n_id ?? ''}}" type="number" class="form-control" id="nid">
   </div>
 </div>
 <!--column end-->
@@ -177,41 +177,6 @@
 
 
 <script>
-  //area under branch
-  function getCustomer(branch){
-            $("#customer").empty();
-            $.ajax({
-                url: 'http://csm.test/admin/customer-list/' + branch,
-                context: document.body,
-                success: function (response){
-                    $("#customer").append("<option value="+''+">"+'Select Customer'+"</option>")
-                    for ( customer of response.data ){
-                        console.log(customer.name)
-                        $("#customer").append("<option value="+customer.id+" ?? '' >"+customer.name+"</option>")
-                    }
-                }
-            });
-        }
-
-         //customer n_id under customer
- function getCustomerData(customer){
-            $("#nid").empty();
-            $.ajax({
-                url: 'http://csm.test/admin/customer-phone-address/' + customer,
-                context: document.body,
-                success: function (response){
-                  // console.log(response.data)
-                  for ( nid of response.data ){
-                        console.log(nid.n_id)
-                        $('#nid').val(nid.n_id);
-                    }
-                     
-                }
-
-                
-            });
-        }   
-
 
         //shipment under branch
   function getShipment(fromBranch){

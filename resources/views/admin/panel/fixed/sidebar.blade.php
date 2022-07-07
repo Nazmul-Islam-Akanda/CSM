@@ -27,72 +27,6 @@
                 </li><!-- /.menu-item -->
 
 
-
-
-
-                <!-- .menu-item -->
-                <li class="menu-item has-child">
-                  <a href="#" class="menu-link"><span class="menu-icon far fa-file"></span> <span class="menu-text">App Pages</span> <span class="badge badge-warning">New</span></a> <!-- child menu -->
-                  <ul class="menu">
-                    <li class="menu-item">
-                      <a href="page-clients.html" class="menu-link">Clients</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="page-teams.html" class="menu-link">Teams</a>
-                    </li>
-                    <li class="menu-item has-child">
-                      <a href="#" class="menu-link">Team</a> <!-- grand child menu -->
-                      <ul class="menu">
-                        <li class="menu-item">
-                          <a href="page-team.html" class="menu-link">Overview</a>
-                        </li>
-                        <li class="menu-item">
-                          <a href="page-team-feeds.html" class="menu-link">Feeds</a>
-                        </li>
-                        <li class="menu-item">
-                          <a href="page-team-projects.html" class="menu-link">Projects</a>
-                        </li>
-                        <li class="menu-item">
-                          <a href="page-team-members.html" class="menu-link">Members</a>
-                        </li>
-                      </ul><!-- /grand child menu -->
-                    </li>
-                    <li class="menu-item has-child">
-                      <a href="#" class="menu-link">Project</a> <!-- grand child menu -->
-                      <ul class="menu">
-                        <li class="menu-item">
-                          <a href="page-project.html" class="menu-link">Overview</a>
-                        </li>
-                        <li class="menu-item">
-                          <a href="page-project-board.html" class="menu-link">Board</a>
-                        </li>
-                        <li class="menu-item">
-                          <a href="page-project-gantt.html" class="menu-link">Gantt View</a>
-                        </li>
-                      </ul><!-- /grand child menu -->
-                    </li>
-                    <li class="menu-item">
-                      <a href="page-calendar.html" class="menu-link">Calendar</a>
-                    </li>
-                    <li class="menu-item has-child">
-                      <a href="#" class="menu-link">Invoices</a> <!-- grand child menu -->
-                      <ul class="menu">
-                        <li class="menu-item">
-                          <a href="page-invoices.html" class="menu-link">List</a>
-                        </li>
-                        <li class="menu-item">
-                          <a href="page-invoice.html" class="menu-link">Details</a>
-                        </li>
-                      </ul><!-- /grand child menu -->
-                    </li>
-                    <li class="menu-item">
-                      <a href="page-messages.html" class="menu-link">Messages</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="page-conversations.html" class="menu-link">Conversations</a>
-                    </li>
-                  </ul><!-- /child menu -->
-                </li><!-- /.menu-item -->
                 <!-- .menu-item -->
                 <li class="menu-item has-child">
                   <a href="#" class="menu-link"><span class="menu-icon oi oi-wrench"></span> <span class="menu-text">Branch</span></a> <!-- child menu -->
@@ -133,72 +67,14 @@
                     <li class="menu-item">
                       <a href="{{route('user.list')}}" class="menu-link">User List</a>
                     </li>
-                    <li class="menu-item">
-                      <a href="user-teams.html" class="menu-link">Teams</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="user-projects.html" class="menu-link">Projects</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="user-tasks.html" class="menu-link">Tasks</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="user-profile-settings.html" class="menu-link">Profile Settings</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="user-account-settings.html" class="menu-link">Account Settings</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="user-billing-settings.html" class="menu-link">Billing Settings</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="user-notification-settings.html" class="menu-link">Notification Settings</a>
-                    </li>
                   </ul><!-- /child menu -->
                 </li><!-- /.menu-item -->
-                <!-- .menu-item -->
-                <li class="menu-item has-child">
-                  <a href="#" class="menu-link"><span class="menu-icon oi oi-browser"></span> <span class="menu-text">Layouts</span> <span class="badge badge-subtle badge-success">+4</span></a> <!-- child menu -->
-                  <ul class="menu">
-                    <li class="menu-item">
-                      <a href="layout-blank.html" class="menu-link">Blank Page</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="layout-nosearch.html" class="menu-link">Header no Search</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="layout-horizontal-menu.html" class="menu-link">Horizontal Menu</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="layout-fullwidth.html" class="menu-link">Full Width</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="layout-pagenavs.html" class="menu-link">Page Navs</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="layout-pagecover.html" class="menu-link">Page Cover</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="layout-pagecover-img.html" class="menu-link">Cover Image</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="layout-pagesidebar.html" class="menu-link">Page Sidebar</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="layout-pagesidebar-fluid.html" class="menu-link">Sidebar Fluid</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="layout-pagesidebar-hidden.html" class="menu-link">Sidebar Hidden</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="layout-custom.html" class="menu-link">Custom</a>
-                    </li>
-                  </ul><!-- /child menu -->
-                </li><!-- /.menu-item -->
-                <!-- .menu-item -->
-                <li class="menu-item">
-                  <a href="landing-page.html" class="menu-link"><span class="menu-icon fas fa-rocket"></span> <span class="menu-text">Landing Page</span></a>
-                </li><!-- /.menu-item -->
+             
+
+
+
+
+                
                 <!-- .menu-header -->
                 <li class="menu-header">Interactions </li><!-- /.menu-header -->
                 <!-- .menu-item -->
@@ -213,24 +89,6 @@
                     </li>
                     <li class="menu-item">
                       <a href="{{route('shipment.list.return')}}" class="menu-link">Return Shipment List</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="component-list-views.html" class="menu-link">List Views</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="component-sortable-nestable.html" class="menu-link">Sortable & Nestable</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="component-activity.html" class="menu-link">Activity</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="component-steps.html" class="menu-link">Steps</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="component-tasks.html" class="menu-link">Tasks</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="component-metrics.html" class="menu-link">Metrics</a>
                     </li>
                   </ul><!-- /child menu -->
                 </li><!-- /.menu-item -->
@@ -267,9 +125,6 @@
                     </li>
                     <li class="menu-item">
                       <a href="{{route('mission.list')}}" class="menu-link">Mission List</a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="collection-jqvmap.html" class="menu-link">Vector Map</a>
                     </li>
                   </ul><!-- /child menu -->
                 </li><!-- /.menu-item -->

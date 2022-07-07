@@ -52,6 +52,7 @@ class IncomeController extends Controller
     public function store(Request $request){
         // dd($request->all());
         Income::create([
+            'from'=>$request->from,
             'beneficiary_branch_id'=>$request->branch,
             'customer_id'=>$request->customer,
             'from_branch_id'=>$request->from_branch,
@@ -67,7 +68,13 @@ class IncomeController extends Controller
     public function edit($id){
         $income=Income::find($id);
         $branches=Branch::all();
-        return view('admin.panel.pages.income_edit',compact('income','branches'));
+        if($income->from=="customer"){
+            return view('admin.panel.pages.income_via.income_from_customer_edit',compact('income','branches'));
+        }
+
+        elseif($income->from=="branch"){
+            return view('admin.panel.pages.income_via.income_from_branch_edit',compact('income','branches'));
+        }
     }
 
     public function update(Request $request, $id){
