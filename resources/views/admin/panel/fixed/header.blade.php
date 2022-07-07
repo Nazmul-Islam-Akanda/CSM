@@ -37,7 +37,7 @@
                   <div class="dropdown-arrow d-lg-none" x-arrow=""></div>
                   <div class="dropdown-arrow ml-3 d-none d-lg-block"></div>
                   <h6 class="dropdown-header d-none d-md-block d-lg-none"> Beni Arisandi </h6>
-                  <a class="dropdown-item" href="user-profile.html"><span class="dropdown-icon oi oi-person"></span> Profile</a> 
+                  <a class="dropdown-item" href="{{route('profile.edit',auth()->user()->id)}}"><span class="dropdown-icon oi oi-person"></span> Profile</a> 
                   <a class="dropdown-item" href="{{route('logout')}}"><span class="dropdown-icon oi oi-account-logout"></span> Logout</a>
                 </div><!-- /.dropdown-menu -->
               </div><!-- /.btn-account -->

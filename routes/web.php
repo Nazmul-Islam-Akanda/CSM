@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\BranchController;
 use App\Http\Controllers\Admin\DriverController;
 use App\Http\Controllers\Admin\MissionController;
+use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\ShipmentController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -180,5 +181,20 @@ Route::get('/shipment-list/{from_branch}','getShipment');
           Route::put('/transaction/excense/update/{expense_id}', 'update')->name('transaction.expense.update');
           Route::get('/transaction/excense/delete/{expense_id}', 'delete')->name('transaction.expense.delete');
       });
+
+
+
+
+
+  //Profile
+  Route::controller(ProfileController::class)
+  ->group(function () {
+      Route::get('/profile/edit/{profile_id}', 'profile')->name('profile.edit');
+         Route::put('/profile/update/{profile_id}', 'profileUpdate')->name('profile.update');
+    //   Route::post('/transaction/excense/store','store')->name('transaction.expense.store');
+    //   Route::get('/transaction/excense/edit/{expense_id}', 'edit')->name('transaction.expense.edit');
+    //   Route::put('/transaction/excense/update/{expense_id}', 'update')->name('transaction.expense.update');
+    //   Route::get('/transaction/excense/delete/{expense_id}', 'delete')->name('transaction.expense.delete');
+  });
 
 });
