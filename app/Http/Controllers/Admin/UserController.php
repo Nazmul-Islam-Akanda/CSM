@@ -7,6 +7,7 @@ use App\Models\Branch;
 use Illuminate\Http\Request;
 use Yoeunes\Toastr\Facades\Toastr;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -50,24 +51,35 @@ class UserController extends Controller
     }
 
     public function update(Request $request, $id){
-        $user=User::find($id);
-
-        $request->validate([
-            'email'=>"required|unique:users,email,$id",
-            'n_id'=>"required|unique:users,n_id,$id",
-        ]);
-
-        $user->update([
-            'name'=>$request->name,
-            'email'=>$request->email,
-            'role'=>$request->role,
-            'phone'=>$request->phone,
-            'n_id'=>$request->n_id,
-            'branch_id'=>$request->branch,
-        ]);
-
-        Toastr::info('User updated successfully.');
-        return redirect()->route('user.list');
+         // dd($request->all());
+         $user=User::find($id);
+         // dd($user);
+         
+                 $request->validate([
+                     'email'=>"required|unique:users,email,$id",
+                     'n_id'=>"required|unique:users,n_id,$id",
+                 ]);
+         
+         
+                 if($request->new_password==$request->confirm_password){
+                     $user->update([
+                         'name'=>$request->name,
+                         'email'=>$request->email,
+                         'role'=>$request->role,
+                         'password'=>bcrypt($request->new_password),
+                         'phone'=>$request->phone,
+                         'n_id'=>$request->n_id,
+                         'branch_id'=>$request->branch,
+                     ]);
+         
+                     Toastr::success('User updated successfully.');
+                     
+                 }
+                 else{
+                     Toastr::warning('New password and confirm password not matched.');
+                 }
+                
+                 return redirect()->back();
     }
 
     public function delete($user){

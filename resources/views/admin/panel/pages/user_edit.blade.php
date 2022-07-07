@@ -56,6 +56,12 @@
 </div>
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
 
+<div class="col-md-3">
+<div class="mb-3">
+    <label for="" class="form-label">Old Password</label> <i class="text-danger">*</i>
+    <input disabled name="password" placeholder='Enter your old password' type="password" class="form-control" id="" required>
+  </div>
+</div>
 <!--column end-->
 </div>
 <!--row end-->
@@ -73,6 +79,24 @@
                 <input type="radio" name="role"  {{ ($user->role) == 'branch_manager' ? 'checked' : '' }}  value="branch_manager" >Branch Manager</label>
             </div>
             </div>
+</div>
+
+&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
+
+<div class="col-md-3">
+<div class="mb-3">
+    <label for="" class="form-label">New Password</label> <i class="text-danger">*</i>
+    <input name="new_password" placeholder='Enter your new password' type="password" class="form-control" id="" required>
+  </div>
+</div>
+
+&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
+
+<div class="col-md-3">
+<div class="mb-3">
+    <label for="" class="form-label">Confirm Password</label> <i class="text-danger">*</i>
+    <input name="confirm_password" placeholder='Confirm your new password' type="password" class="form-control" id="" required>
+  </div>
 </div>
 <!--column end-->
 </div>

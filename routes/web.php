@@ -2,6 +2,7 @@
 
 use App\Models\Branch;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TrackController;
 use App\Http\Controllers\Admin\AreaController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\LoginController;
@@ -27,14 +28,16 @@ use App\Http\Controllers\Admin\Transaction\ExpenseController;
 */
 
 Route::get('/', function () {
-    // return view('welcome');
-    return view('admin.login.login');
-    // return view('admin.panel.master');
+    return view('website.master');
 });
 
 //login
 Route::get('/login',[LoginController::class,'loginpage'])->name('login.page');
 Route::post('/do/login',[LoginController::class,'doLogin'])->name('doLogin');
+
+//track shipping
+Route::get('/shipping/track',[TrackController::class,'shippingTrack'])->name('shipping.track');
+
 
 
 
@@ -191,10 +194,9 @@ Route::get('/shipment-list/{from_branch}','getShipment');
   ->group(function () {
       Route::get('/profile/edit/{profile_id}', 'profile')->name('profile.edit');
          Route::put('/profile/update/{profile_id}', 'profileUpdate')->name('profile.update');
-    //   Route::post('/transaction/excense/store','store')->name('transaction.expense.store');
-    //   Route::get('/transaction/excense/edit/{expense_id}', 'edit')->name('transaction.expense.edit');
-    //   Route::put('/transaction/excense/update/{expense_id}', 'update')->name('transaction.expense.update');
-    //   Route::get('/transaction/excense/delete/{expense_id}', 'delete')->name('transaction.expense.delete');
-  });
+     });
+
+
+
 
 });
