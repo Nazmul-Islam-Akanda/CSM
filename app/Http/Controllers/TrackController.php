@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Shipment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class TrackController extends Controller
 {
     public function shippingTrack()
     {
         $key=null;
+        $shipment=null;
         if(request()->search){
             $key=request()->search;
             $shipment=Shipment::whereLike(['shipment_id'],$key)
@@ -17,7 +19,7 @@ class TrackController extends Controller
             // dd($shipment);
             return view('website.master',compact('shipment','key'));
         }
-
-        return view('website.master');
+// dd($shipment);
+        return view('website.master',compact('shipment','key'));
     }
 }

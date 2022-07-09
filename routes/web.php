@@ -28,8 +28,11 @@ use App\Http\Controllers\Admin\Transaction\ExpenseController;
 */
 
 Route::get('/', function () {
-    return view('website.master');
-});
+
+    $shipment=null;
+
+    return view('website.master',compact('shipment'));
+})-> name('website.home');
 
 //login
 Route::get('/login',[LoginController::class,'loginpage'])->name('login.page');
