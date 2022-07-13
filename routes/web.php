@@ -55,6 +55,8 @@ route::get('/dashboard',[DashboardController::class,'dashboard'])->name('admin.d
 
 //clinic setup
 route::get('/website/setup/info',[WebsiteSetupController::class,'setupInfo'])->name('website.setup.info');
+route::get('/website/setup/edit/{id}',[WebsiteSetupController::class,'setupEdit'])->name('website.setup.edit');
+route::put('/website/setup/update/{id}',[WebsiteSetupController::class,'setupUpdate'])->name('website.setup.update');
 
 //branch
 Route::controller(BranchController::class)

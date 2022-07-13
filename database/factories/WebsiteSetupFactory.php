@@ -17,7 +17,10 @@ class WebsiteSetupFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name'=>$this->faker->name(),
+            'contact'=>$this->faker->phoneNumber(),
+            'email'=>$this->faker->email(),
+            'address'=>$this->faker->text(),
         ];
     }
 }
