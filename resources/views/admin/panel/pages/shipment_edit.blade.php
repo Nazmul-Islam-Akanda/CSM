@@ -220,8 +220,8 @@
             <label for="exampleFormControlSelect1">Payment Type</label> <i class="text-danger">*</i>
             <select name="payment_type" class="form-control" id="exampleFormControlSelect1">
 
-                    <option {{ ($shipment->pay_type) == 'Prepaid' ? 'selected' : '' }}  value="Prepaid">Prepaid</option>
-            <option {{ ($shipment->pay_type) == 'Postpaid' ? 'selected' : '' }}  value="Postpaid">Postpaid</option>
+                    <option {{ ($shipment->payment_type) == 'Prepaid' ? 'selected' : '' }}  value="Prepaid">Prepaid</option>
+            <option {{ ($shipment->payment_type) == 'Postpaid' ? 'selected' : '' }}  value="Postpaid">Postpaid</option>
             
             </select>
     </div>

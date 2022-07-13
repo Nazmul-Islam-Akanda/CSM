@@ -36,8 +36,16 @@ class BranchController extends Controller
     }
 
     public function list(){
-        $branches=Branch::all();
-        return view('admin.panel.pages.branch_list',compact('branches'));
+
+        $key=null;
+        if(request()->search){
+            $key=request()->search;
+            $branches = Branch::whereLike(['name','email','owner_nid','address','owner_name','owner_phone','ship_prefix'],$key)
+            ->get();
+            return view('admin.panel.pages.branch_list',compact('branches','key'));
+        }
+        $branches = Branch::all();
+        return view('admin.panel.pages.branch_list',compact('branches','key'));
     }
 
     public function edit($id){

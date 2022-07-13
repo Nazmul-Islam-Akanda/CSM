@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\WebsiteSetup;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -25,6 +28,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
+        if(Schema::hasTable('website_setups'))
+        {
+            View::share('info', WebsiteSetup::first());
+        }
         
 
     Builder::macro('whereLike', function ($attributes, string $searchTerm) {

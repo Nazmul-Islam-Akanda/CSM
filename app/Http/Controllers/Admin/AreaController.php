@@ -28,8 +28,19 @@ class AreaController extends Controller
 
 
     public function list(){
-        $areas=Area::with('branch')->get();
-        return view('admin.panel.pages.area_list',compact('areas'));
+
+
+        $key=null;
+        if(request()->search){
+            $key=request()->search;
+            $areas = Area::with('branch')
+            ->whereLike(['branch.name','area'],$key)
+            ->get();
+            return view('admin.panel.pages.area_list',compact('areas','key'));
+        }
+        $areas = Area::with('branch')->get();
+        return view('admin.panel.pages.area_list',compact('areas','key'));
+
     }
 
     public function edit($id){

@@ -105,6 +105,7 @@ Route::get('/customer-phone-address/{customer}','getCustomerInfo');
 
      Route::post('/shipment/store','store')->name('shipment.store');
      Route::get('/shipment/list', 'list')->name('shipment.list');
+     Route::get('/shipment/details/{shipment_id}', 'details')->name('shipment.details');
      Route::get('/shipment/edit/{shipment_id}', 'edit')->name('shipment.edit');
      Route::put('/shipment/update/{shipment_id}', 'update')->name('shipment.update');
      Route::get('/shipment/delete/{shipment_id}', 'delete')->name('shipment.delete');

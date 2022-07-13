@@ -18,10 +18,6 @@ class Shipment extends Model
         return $this->belongsTo(Branch::class, 'to_branch_id');
     }
 
-    public function area(){
-        return $this->belongsTo(Area::class);
-    }
-
     public function toarea(){
         return $this->belongsTo(Area::class, 'to_area_id');
     }

@@ -40,8 +40,19 @@ class UserController extends Controller
     }
 
     public function list(){
-        $users=User::with('branch')->get();
-        return view('admin.panel.pages.user_list',compact('users'));
+
+
+        $key=null;
+        if(request()->search){
+            $key=request()->search;
+            $users = User::with('branch')
+            ->whereLike(['branch.name','name','email','role','phone','n_id'],$key)
+            ->get();
+            return view('admin.panel.pages.user_list',compact('users','key'));
+        }
+        $users = User::with('branch')->get();
+        return view('admin.panel.pages.user_list',compact('users','key'));
+
     }
 
     public function edit($id){

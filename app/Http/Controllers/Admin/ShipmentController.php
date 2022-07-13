@@ -82,8 +82,18 @@ public function store(Request $request){
     }
 
     public function list(){
-        $shipments=Shipment::with('branch','area','customer')->where('shipment_direction','on_delivery')->paginate(10);;
-        return view('admin.panel.pages.shipment_list',compact('shipments'));
+
+        $key=null;
+        if(request()->search){
+            $key=request()->search;
+            $shipments = Shipment::with('branch','tobranch','toarea','fromarea','customer')->where('shipment_direction','on_delivery')
+            ->whereLike(['branch.name','tobranch.name','toarea.area','fromarea.area','customer.name','customer.phone','customer.address','type','date','time','receiver_name','receiver_phone','receiver_address','payment_type','pay_method','pay_status','shipment_id','product_description','quantity','shipping_cost','status'],$key)
+            ->paginate(10);
+            return view('admin.panel.pages.shipment_list',compact('shipments','key'));
+        }
+        $shipments = Shipment::with('branch','tobranch','toarea','fromarea','customer')->paginate(10);
+        return view('admin.panel.pages.shipment_list',compact('shipments','key'));
+
     }
 
     public function multiUpdate(Request $request){
@@ -106,6 +116,13 @@ public function store(Request $request){
         
     }
 
+    public function details($id){
+        $shipment=Shipment::find($id);
+        $branches=Branch::all();
+        $customers=Customer::all();
+        $areas=Area::all();
+        return view('admin.panel.pages.shipment_details',compact('shipment','branches','customers','areas'));
+    }
 
     public function edit($id){
         $shipment=Shipment::find($id);
@@ -152,8 +169,17 @@ public function store(Request $request){
 
 
     public function returnList(){
-        $shipments=Shipment::with('branch','area','customer')->where('shipment_direction','return')->paginate(10);;
-        return view('admin.panel.pages.shipment_return_list',compact('shipments'));
+
+        $key=null;
+        if(request()->search){
+            $key=request()->search;
+            $shipments = Shipment::with('branch','tobranch','toarea','fromarea','customer')->where('shipment_direction','return')
+            ->whereLike(['branch.name','tobranch.name','toarea.area','fromarea.area','customer.name','customer.phone','customer.address','type','date','time','receiver_name','receiver_phone','receiver_address','payment_type','pay_method','pay_status','shipment_id','product_description','quantity','shipping_cost','status'],$key)
+            ->paginate(10);
+            return view('admin.panel.pages.shipment_return_list',compact('shipments','key'));
+        }
+        $shipments = Shipment::with('branch','tobranch','toarea','fromarea','customer')->where('shipment_direction','return')->paginate(10);
+        return view('admin.panel.pages.shipment_return_list',compact('shipments','key'));
     }
 
 }
