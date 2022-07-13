@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\ShipmentController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\WebsiteSetupController;
 use App\Http\Controllers\Admin\Transaction\IncomeController;
 use App\Http\Controllers\Admin\Transaction\ExpenseController;
 
@@ -51,6 +52,9 @@ Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
 //dashboard
 route::get('/dashboard',[DashboardController::class,'dashboard'])->name('admin.dashboard');
+
+//clinic setup
+route::get('/website/setup/info',[WebsiteSetupController::class,'setupInfo'])->name('website.setup.info');
 
 //branch
 Route::controller(BranchController::class)

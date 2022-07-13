@@ -28,6 +28,11 @@
 
 
                 <!-- .menu-item -->
+                <li class="menu-item">
+                  <a href="{{route('website.setup.info')}}" class="menu-link"><span class="menu-icon fas fa-rocket"></span> <span class="menu-text">Website Setup</span></a>
+                </li>
+              
+
                 <li class="menu-item has-child">
                   <a href="#" class="menu-link"><span class="menu-icon oi oi-wrench"></span> <span class="menu-text">Branch</span></a> <!-- child menu -->
                   <ul class="menu">
