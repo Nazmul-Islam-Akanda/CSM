@@ -41,10 +41,10 @@ class BranchController extends Controller
         if(request()->search){
             $key=request()->search;
             $branches = Branch::whereLike(['name','email','owner_nid','address','owner_name','owner_phone','ship_prefix'],$key)
-            ->get();
+            ->paginate(10);
             return view('admin.panel.pages.branch_list',compact('branches','key'));
         }
-        $branches = Branch::all();
+        $branches = Branch::paginate(10);;
         return view('admin.panel.pages.branch_list',compact('branches','key'));
     }
 

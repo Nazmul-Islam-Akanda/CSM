@@ -27,8 +27,18 @@ class IncomeController extends Controller
     }
 
     public function list(){
-        $incomes=Income::with('branch','customer','shipment')->get();
-        return view('admin.panel.pages.income_list',compact('incomes'));
+
+        $key=null;
+        if(request()->search){
+            $key=request()->search;
+            $incomes = Income::with('branch','from_branch','customer','shipment')
+            ->whereLike(['branch.name','from_branch.name','customer.name','shipment.shipment_id','income','description','from','created_at'],$key)
+            ->paginate(10);
+            return view('admin.panel.pages.income_list',compact('incomes','key'));
+        }
+        $incomes = Income::with('branch','from_branch','customer','shipment')->paginate(10);
+        return view('admin.panel.pages.income_list',compact('incomes','key'));
+
     }
 
 

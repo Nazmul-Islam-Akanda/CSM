@@ -155,7 +155,7 @@
   function getArea(branch){
             $("#area").empty();
             $.ajax({
-                url: 'http://csm.test/admin/area-list/' + branch,
+                url: 'https://csm.test/admin/area-list/' + branch,
                 context: document.body,
                 success: function (response){
 

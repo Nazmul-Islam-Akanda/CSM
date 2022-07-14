@@ -47,10 +47,10 @@ class UserController extends Controller
             $key=request()->search;
             $users = User::with('branch')
             ->whereLike(['branch.name','name','email','role','phone','n_id'],$key)
-            ->get();
+            ->paginate(10);
             return view('admin.panel.pages.user_list',compact('users','key'));
         }
-        $users = User::with('branch')->get();
+        $users = User::with('branch')->paginate(10);
         return view('admin.panel.pages.user_list',compact('users','key'));
 
     }

@@ -12,8 +12,17 @@ use Nette\Schema\Expect;
 class ExpenseController extends Controller
 {
     public function list(){
-        $expenses=Expense::with('branch')->get();
-        return view('admin.panel.pages.expense_list',compact('expenses'));
+
+        $key=null;
+        if(request()->search){
+            $key=request()->search;
+            $expenses = Expense::with('branch')
+            ->whereLike(['branch.name','date','time','expense','description'],$key)
+            ->paginate(10);
+            return view('admin.panel.pages.expense_list',compact('expenses','key'));
+        }
+        $expenses = Expense::with('branch')->paginate(10);
+        return view('admin.panel.pages.expense_list',compact('expenses','key'));
     }
 
     public function create(){

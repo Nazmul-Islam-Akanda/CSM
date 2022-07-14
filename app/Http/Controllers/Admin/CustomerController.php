@@ -49,9 +49,20 @@ class CustomerController extends Controller
     }
 
     public function list(){
-        $customers=Customer::with('branch','area')->get();
-        return view('admin.panel.pages.customer_list',compact('customers'));
+
+
+        $key=null;
+        if(request()->search){
+            $key=request()->search;
+            $customers = Customer::with('branch','area')
+            ->whereLike(['branch.name','area.area','name','email','n_id','phone','address'],$key)
+            ->paginate(10);
+            return view('admin.panel.pages.customer_list',compact('customers','key'));
+        }
+        $customers = Customer::with('branch','area')->paginate(10);
+        return view('admin.panel.pages.customer_list',compact('customers','key'));
     }
+
 
     public function edit($id){
         $customer=Customer::find($id);

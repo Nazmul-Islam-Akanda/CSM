@@ -14,7 +14,7 @@
               <!-- .page-title-bar -->
               <header class="page-title-bar">
                 <div class="d-flex flex-column flex-md-row">
-                <a href="{{route('transaction.income.list')}}" class="btn" style="background-color:lightgray; border-radius:10px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zm0 9V8l-4 4 4 4v-3h4v-2h-4z" fill="rgba(34,128,123,1)"/></svg></a>  &nbsp;&nbsp;   <h1> Add Income from Customer</h1> 
+                <a href="{{route('transaction.income.list')}}" class="btn" style="background-color:lightgray; border-radius:10px"><svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zm0 9V8l-4 4 4 4v-3h4v-2h-4z" fill="rgba(34,128,123,1)"/></svg></a>  &nbsp;&nbsp;   <h1> Add Income from Customer</h1> 
                 </div>
 
               </header>
@@ -165,7 +165,7 @@
   function getCustomer(branch){
             $("#customer").empty();
             $.ajax({
-                url: 'http://csm.test/admin/customer-list/' + branch,
+                url: 'https://csm.test/admin/customer-list/' + branch,
                 context: document.body,
                 success: function (response){
                     $("#customer").append("<option value="+''+">"+'Select Customer'+"</option>")
@@ -181,7 +181,7 @@
  function getCustomerData(customer){
             $("#nid").empty();
             $.ajax({
-                url: 'http://csm.test/admin/customer-phone-address/' + customer,
+                url: 'https://csm.test/admin/customer-phone-address/' + customer,
                 context: document.body,
                 success: function (response){
                   // console.log(response.data)

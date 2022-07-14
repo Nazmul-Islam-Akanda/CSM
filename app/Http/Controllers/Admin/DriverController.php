@@ -36,8 +36,17 @@ class DriverController extends Controller
     }
 
     public function list(){
-        $drivers=Driver::with('branch')->get();
-        return view('admin.panel.pages.driver_list',compact('drivers'));
+
+        $key=null;
+        if(request()->search){
+            $key=request()->search;
+            $drivers = Driver::with('branch')
+            ->whereLike(['branch.name','name','phone','n_id','address'],$key)
+            ->paginate(10);
+            return view('admin.panel.pages.driver_list',compact('drivers','key'));
+        }
+        $drivers = Driver::with('branch')->paginate(10);
+        return view('admin.panel.pages.driver_list',compact('drivers','key'));
     }
 
     public function edit($id){

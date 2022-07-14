@@ -36,7 +36,7 @@ Route::get('/', function () {
 })-> name('website.home');
 
 //login
-Route::get('/login',[LoginController::class,'loginpage'])->name('login.page');
+Route::get('/admin',[LoginController::class,'loginpage'])->name('login.page');
 Route::post('/do/login',[LoginController::class,'doLogin'])->name('doLogin');
 
 //track shipping

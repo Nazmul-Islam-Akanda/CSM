@@ -82,7 +82,7 @@
     <!--column start-->
     <div class="col-md-3">
     <div class="form-group">
-            <label for="exampleFormControlSelect1">Customer/Sender</label> <i class="text-danger">*</i> <a href="{{route('customer.add')}}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M4 3h16a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm7 8H7v2h4v4h2v-4h4v-2h-4V7h-2v4z"/></svg>Add</a>
+            <label for="exampleFormControlSelect1">Customer/Sender</label> <i class="text-danger">*</i> <a href="{{route('customer.add')}}"><svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M4 3h16a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm7 8H7v2h4v4h2v-4h4v-2h-4V7h-2v4z"/></svg>Add</a>
             <select name="customer" onchange="getCustomerData(this.value)" id="customer" style="width: 200px" class="customer">    
   
     </select>
@@ -347,7 +347,7 @@
             $("#customer").empty();
             $("#from_area").empty();
             $.ajax({
-                url: 'http://csm.test/admin/customer-list/' + branch,
+                url: 'https://csm.test/admin/customer-list/' + branch,
                 context: document.body,
                 success: function (response){
 
@@ -360,7 +360,7 @@
             });
 
             $.ajax({
-                url: 'http://csm.test/admin/area-list/' + branch,
+                url: 'https://csm.test/admin/area-list/' + branch,
                 context: document.body,
                 success: function (response){
 
@@ -380,7 +380,7 @@
             $("#phone").empty();
             $("#address").empty();
             $.ajax({
-                url: 'http://csm.test/admin/customer-phone-address/' + customer,
+                url: 'https://csm.test/admin/customer-phone-address/' + customer,
                 context: document.body,
                 success: function (response){
                   // console.log(response.data)
@@ -406,7 +406,7 @@
  function getToArea(branch){
             $("#to_area").empty();
             $.ajax({
-                url: 'http://csm.test/admin/area-list/' + branch,
+                url: 'https://csm.test/admin/area-list/' + branch,
                 context: document.body,
                 success: function (response){
                   // console.log(response.data)

@@ -87,8 +87,18 @@ class MissionController extends Controller
 
 
     public function list(){
-        $missions=Mission::with('branch','driver','to_branch','mission_details')->paginate(10);
-        return view('admin.panel.pages.mission_list',compact('missions'));
+
+        $key=null;
+        if(request()->search){
+            $key=request()->search;
+            $missions = Mission::with('branch','driver','to_branch','mission_details')
+            ->whereLike(['branch.name','to_branch.name','driver.name','driver.phone','driver.address','mission_details.shipping_id','date','time','car_no','status'],$key)
+            ->paginate(10);
+            return view('admin.panel.pages.mission_list',compact('missions','key'));
+        }
+        $missions = Mission::with('branch','driver','to_branch','mission_details')->paginate(10);
+        return view('admin.panel.pages.mission_list',compact('missions','key'));
+
     }
 
 

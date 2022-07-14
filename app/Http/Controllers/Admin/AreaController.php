@@ -35,10 +35,10 @@ class AreaController extends Controller
             $key=request()->search;
             $areas = Area::with('branch')
             ->whereLike(['branch.name','area'],$key)
-            ->get();
+            ->paginate(10);
             return view('admin.panel.pages.area_list',compact('areas','key'));
         }
-        $areas = Area::with('branch')->get();
+        $areas = Area::with('branch')->paginate(10);
         return view('admin.panel.pages.area_list',compact('areas','key'));
 
     }

@@ -83,7 +83,7 @@
     <!--column start-->
     <div class="col-md-3">
     <div class="form-group">
-            <label for="exampleFormControlSelect1">Driver</label> <i class="text-danger">*</i> <a href="{{route('driver.add')}}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M4 3h16a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm7 8H7v2h4v4h2v-4h4v-2h-4V7h-2v4z"/></svg>Add</a>
+            <label for="exampleFormControlSelect1">Driver</label> <i class="text-danger">*</i> <a href="{{route('driver.add')}}"><svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M4 3h16a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm7 8H7v2h4v4h2v-4h4v-2h-4V7h-2v4z"/></svg>Add</a>
             <select name="driver" onchange="getCustomerData(this.value)" id="driver" style="width: 200px" class="driver">    
   
     </select>
@@ -204,7 +204,7 @@
   function getDriver(branch){
             $("#driver").empty();
             $.ajax({
-                url: 'http://csm.test/admin/driver-list/' + branch,
+                url: 'https://csm.test/admin/driver-list/' + branch,
                 context: document.body,
                 success: function (response){
 
@@ -224,7 +224,7 @@
             $("#phone").empty();
             $("#address").empty();
             $.ajax({
-                url: 'http://csm.test/admin/driver-phone-address/' + driver,
+                url: 'https://csm.test/admin/driver-phone-address/' + driver,
                 context: document.body,
                 success: function (response){
                   // console.log(response.data)
