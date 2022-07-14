@@ -28,9 +28,11 @@
 
 
                 <!-- .menu-item -->
+                @if(auth()->user()->role=="admin")
                 <li class="menu-item">
                   <a href="{{route('website.setup.info')}}" class="menu-link"><span class="menu-icon fas fa-rocket"></span> <span class="menu-text">Website Setup</span></a>
                 </li>
+                @endif
               
 
                 <li class="menu-item has-child">
@@ -63,6 +65,7 @@
 
 
                 <!-- .menu-item -->
+                @if(auth()->user()->role=="admin")
                 <li class="menu-item has-child">
                   <a href="#" class="menu-link"><span class="menu-icon oi oi-person"></span> <span class="menu-text">User</span></a> <!-- child menu -->
                   <ul class="menu">
@@ -73,7 +76,8 @@
                       <a href="{{route('user.list')}}" class="menu-link">User List</a>
                     </li>
                   </ul><!-- /child menu -->
-                </li><!-- /.menu-item -->
+                </li> 
+                @endif<!-- /.menu-item -->
              
 
 

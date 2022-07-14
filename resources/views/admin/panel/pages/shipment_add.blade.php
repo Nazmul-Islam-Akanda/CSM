@@ -44,10 +44,11 @@
 <div class="row">
     <!--column start-->
     <div class="col-md-3">
+        @if(auth()->user()->role=="admin")
     <div class="form-group">
             <label for="exampl eFormControlSelect1">Branch</label> <i class="text-danger">*</i><br>
             <select name="branch" onchange="getCustomerArea(this.value)" style="width: 200px" id="nameid">
-            <option value=""></option>
+            <option value="">Select a branch</option>
             @foreach ($branches as $branch)
                     <option value="{{$branch->id}}">{{$branch->name}}</option>
                     @endforeach
@@ -55,6 +56,21 @@
     </select>
 
     </div>
+    @endif
+
+    @if(auth()->user()->role=="branch_manager")
+    <div class="form-group">
+            <label for="exampl eFormControlSelect1">Branch</label> <i class="text-danger">*</i><br>
+            <select name="branch" onchange="getCustomerArea(this.value)" style="width: 200px" id="nameid">
+            <option value="">Select a branch</option>
+  
+                    <option value="{{auth()->user()->branch_id}}">{{auth()->user()->branch->name}}</option>
+            
+  
+    </select>
+
+    </div>
+    @endif
 </div>
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
 
@@ -84,7 +100,7 @@
     <div class="form-group">
             <label for="exampleFormControlSelect1">Customer/Sender</label> <i class="text-danger">*</i> <a href="{{route('customer.add')}}"><svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M4 3h16a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm7 8H7v2h4v4h2v-4h4v-2h-4V7h-2v4z"/></svg>Add</a>
             <select name="customer" onchange="getCustomerData(this.value)" id="customer" style="width: 200px" class="customer">    
-  
+
     </select>
 
     </div>

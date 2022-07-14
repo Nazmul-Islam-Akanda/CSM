@@ -45,6 +45,7 @@
 <div class="row">
     <!--column start-->
     <div class="col-md-3">
+    @if(auth()->user()->role=="admin")
     <div class="form-group">
             <label for="exampleFormControlSelect1">Branch</label> <i class="text-danger">*</i><br>
             <select name="branch" onchange="getCustomerArea(this.value)" style="width: 200px" id="nameid">
@@ -59,6 +60,20 @@
     </select>
 
     </div>
+    @endif
+    @if(auth()->user()->role=="branch_manager")
+    <div class="form-group">
+            <label for="exampl eFormControlSelect1">Branch</label> <i class="text-danger">*</i><br>
+            <select name="branch" onchange="getCustomerArea(this.value)" style="width: 200px" id="nameid">
+            <option value="">Select a branch</option>
+  
+                    <option selected value="{{auth()->user()->branch_id}}">{{auth()->user()->branch->name}}</option>
+            
+  
+    </select>
+
+    </div>
+    @endif
 </div>
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
 

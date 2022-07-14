@@ -39,6 +39,7 @@
 <div class="row">
     <!--column start-->
     <div class="col-md-3">
+      @if(auth()->user()->role=="admin")
     <div class="form-group">
             <label for="exampleFormControlSelect1">Branch</label> <i class="text-danger">*</i>
             <select name="branch" class="form-control" id="exampleFormControlSelect1">
@@ -48,6 +49,19 @@
                     @endforeach
             </select>
     </div>
+    @endif
+
+    @if(auth()->user()->role=="branch_manager")
+    <div class="form-group">
+            <label for="exampleFormControlSelect1">Branch</label> <i class="text-danger">*</i>
+            <select name="branch" class="form-control" id="exampleFormControlSelect1">
+            <option value="">Select branch</option>
+            
+                    <option value="{{auth()->user()->branch_id}}">{{auth()->user()->branch->name}}</option>
+                   
+            </select>
+    </div>
+    @endif
 </div>
 &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
 
