@@ -149,6 +149,20 @@
                     </li>
                   </ul><!-- /child menu -->
                 </li><!-- /.menu-item -->
+
+                  <!-- .menu-item -->
+                  <li class="menu-item has-child">
+                  <a href="#" class="menu-link"><span class="menu-icon oi oi-list-rich"></span> <span class="menu-text">Reports</span></a> <!-- child menu -->
+                  <ul class="menu">
+                    <li class="menu-item">
+                      <a href="{{route('transaction.income.report')}}" class="menu-link">Income Transactions</a>
+                    </li>
+                    <li class="menu-item">
+                      <a href="{{route('transaction.expense.list')}}" class="menu-link">Expense Transactions</a>
+                    </li>
+                  </ul><!-- /child menu -->
+                </li><!-- /.menu-item -->
+
               </ul><!-- /.menu -->
             </nav><!-- /.stacked-menu -->
           </div><!-- /.aside-menu -->

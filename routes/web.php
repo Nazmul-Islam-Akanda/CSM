@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\BranchController;
 use App\Http\Controllers\Admin\DriverController;
+use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\MissionController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\CustomerController;
@@ -196,7 +197,16 @@ Route::get('/shipment-list/{from_branch}','getShipment');
       });
 
 
-
+    //Expense
+    Route::controller(ReportController::class)
+    ->group(function () {
+        Route::get('/transaction/income/report', 'incomeReport')->name('transaction.income.report');
+        //    Route::get('/transaction/excense/add', 'create')->name('transaction.expense.add');
+        // Route::post('/transaction/excense/store','store')->name('transaction.expense.store');
+        // Route::get('/transaction/excense/edit/{expense_id}', 'edit')->name('transaction.expense.edit');
+        // Route::put('/transaction/excense/update/{expense_id}', 'update')->name('transaction.expense.update');
+        // Route::get('/transaction/excense/delete/{expense_id}', 'delete')->name('transaction.expense.delete');
+    });
 
 
   //Profile
