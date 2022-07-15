@@ -23,23 +23,27 @@
 
 <!--row start-->
 <div class="row">
-    <!--column start-->
-<div class="col-md-3">
+
+
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0H24V24H0z"/><path d="M21 4L21 6 20 6 14 15 14 22 10 22 10 15 4 6 3 6 3 4z" fill="rgba(255,255,255,1)"/></svg> Fifter
 </button>
-</div>
 
-<div class="col-md-3">
+&nbsp;&nbsp;&nbsp; 
 
-</div>
-<!--column end-->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#excel">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M3 19h18v2H3v-2zM13 9h7l-8 8-8-8h7V1h2v8z" fill="rgba(255,254,254,1)"/></svg> Export Excel
+</button>
+
+
 </div>
 <!--row end-->
 
 <br>
-           <p><b>Total income is {{$reports->sum('income')}}</b></p>   
+@if($reports)
+<p><b>Total income is {{$reports->sum('income') ?? ""}}</b></p>  
+@endif
               <table class="table table-bordered table-striped">
   <thead>
     <tr style='background-color:#00ffff'>
@@ -73,7 +77,7 @@
 
 
 
-<!-- Modal -->
+<!-- Modal Filter -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -139,6 +143,82 @@
     </div>
   </div>
 </div>
+<!-- Modal Filter End -->
+
+
+
+
+
+<!-- Modal Excel Download -->
+<div class="modal fade" id="excel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Download Income Report</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+<!-- //form -->
+      <form action="{{route('transaction.income.report.excel.download')}}"  method="GET" style="text-align:center;">
+
+<div class="row" >
+
+
+    <label for="fromdate" class="form-label"><h5>From</h5></label>
+    <input name="fromdate" type="date" class="form-control" id="fromdate" >
+
+<br><br><br>
+ 
+    <label for="todate" class="form-label"><h5>To</h5></label>
+    <input name="todate" type="date" class="form-control" id="todate" >
+
+    <br><br><br>
+    @if(auth()->user()->role=="admin")
+
+            <label for="exampleFormControlSelect1">Beneficiary Branch</label> 
+            <select name="branch" class="form-control" id="exampleFormControlSelect1">
+            <option value="">Select branch</option>
+            @foreach ($branches as $branch)
+                    <option value="{{$branch->id}}">{{$branch->name}}</option>
+                    @endforeach
+            </select>
+ 
+    @endif
+    @if(auth()->user()->role=="branch_manager")
+
+            <label for="exampleFormControlSelect1">Beneficiary Branch</label> 
+            <select name="branch" class="form-control" id="exampleFormControlSelect1">
+            <option value="">Select branch</option>
+           
+                    <option value="{{auth()->user()->branch_id}}">{{auth()->user()->branch->name}}</option>
+              
+            </select>
+            
+    @endif
+
+    
+   <br><br><br><br>
+        <button  type="submit" class="btn btn-success btn-sm">Download</button>
+  
+</div>
+</form>
+<!-- //form -->
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Excel Download -->
+
+
+
 
 
 

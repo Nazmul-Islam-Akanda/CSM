@@ -201,7 +201,7 @@ Route::get('/shipment-list/{from_branch}','getShipment');
     Route::controller(ReportController::class)
     ->group(function () {
         Route::get('/transaction/income/report', 'incomeReport')->name('transaction.income.report');
-        //    Route::get('/transaction/excense/add', 'create')->name('transaction.expense.add');
+           Route::get('/transaction/excense/report/excel/download', 'incomeReportExcel')->name('transaction.income.report.excel.download');
         // Route::post('/transaction/excense/store','store')->name('transaction.expense.store');
         // Route::get('/transaction/excense/edit/{expense_id}', 'edit')->name('transaction.expense.edit');
         // Route::put('/transaction/excense/update/{expense_id}', 'update')->name('transaction.expense.update');
