@@ -30,9 +30,9 @@
                         <div class="col">
                           <!-- .metric -->
                           <a href="user-teams.html" class="metric metric-bordered align-items-center">
-                            <h2 class="metric-label"> Teams </h2>
+                            <h2 class="metric-label"> Total Shipments </h2>
                             <p class="metric-value h3">
-                              <sub><i class="oi oi-people"></i></sub> <span class="value">8</span>
+                              <sub><i class="oi oi-people"></i></sub> <span class="value">{{$count['shipments']}}</span>
                             </p>
                           </a> <!-- /.metric -->
                         </div><!-- /metric column -->
@@ -40,9 +40,9 @@
                         <div class="col">
                           <!-- .metric -->
                           <a href="user-projects.html" class="metric metric-bordered align-items-center">
-                            <h2 class="metric-label"> Projects </h2>
+                            <h2 class="metric-label"> Total Customers </h2>
                             <p class="metric-value h3">
-                              <sub><i class="oi oi-fork"></i></sub> <span class="value">12</span>
+                              <sub><i class="oi oi-fork"></i></sub> <span class="value">{{$count['customers']}}</span>
                             </p>
                           </a> <!-- /.metric -->
                         </div><!-- /metric column -->
@@ -50,9 +50,19 @@
                         <div class="col">
                           <!-- .metric -->
                           <a href="user-tasks.html" class="metric metric-bordered align-items-center">
-                            <h2 class="metric-label"> Active Tasks </h2>
+                            <h2 class="metric-label"> Income of this Month </h2>
                             <p class="metric-value h3">
-                              <sub><i class="fa fa-tasks"></i></sub> <span class="value">64</span>
+                              <sub><i class="fa fa-tasks"></i></sub> <span class="value">{{$count['income']}}</span>
+                            </p>
+                          </a> <!-- /.metric -->
+                        </div><!-- /metric column -->
+                             <!-- metric column -->
+                             <div class="col">
+                          <!-- .metric -->
+                          <a href="user-tasks.html" class="metric metric-bordered align-items-center">
+                            <h2 class="metric-label"> Expense of this Month </h2>
+                            <p class="metric-value h3">
+                              <sub><i class="fa fa-tasks"></i></sub> <span class="value">{{$count['expense']}}</span>
                             </p>
                           </a> <!-- /.metric -->
                         </div><!-- /metric column -->
@@ -62,10 +72,10 @@
                       <!-- .metric -->
                       <a href="user-tasks.html" class="metric metric-bordered">
                         <div class="metric-badge">
-                          <span class="badge badge-lg badge-success"><span class="oi oi-media-record pulse mr-1"></span> ONGOING TASKS</span>
+                        <h3 style="color:black; background-color:#E4F789"> Profit of this Month </h3>
                         </div>
                         <p class="metric-value h3">
-                          <sub><i class="oi oi-timer"></i></sub> <span class="value">8</span>
+                          <sub><i class="oi oi-timer"></i></sub> <span class="value">{{$count['profit']}}</span>
                         </p>
                       </a> <!-- /.metric -->
                     </div><!-- /metric column -->
@@ -77,5 +87,8 @@
             </div><!-- /.page-inner -->
           </div><!-- /.page -->
         </div>
+
+
+
         
         @endsection
