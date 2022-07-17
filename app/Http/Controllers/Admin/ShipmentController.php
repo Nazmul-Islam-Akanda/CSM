@@ -91,7 +91,7 @@ public function store(Request $request){
             ->paginate(10);
             return view('admin.panel.pages.shipment_list',compact('shipments','key'));
         }
-        $shipments = Shipment::with('branch','tobranch','toarea','fromarea','customer')->paginate(10);
+        $shipments = Shipment::with('branch','tobranch','toarea','fromarea','customer')->where('shipment_direction','on_delivery')->paginate(10);
         return view('admin.panel.pages.shipment_list',compact('shipments','key'));
 
     }

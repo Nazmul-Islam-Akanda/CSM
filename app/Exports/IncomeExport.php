@@ -36,7 +36,7 @@ class IncomeExport implements FromCollection,WithMapping,WithHeadings
         $reports->from_branch->name ?? "",
         $reports->shipment->shipment_id ?? "",
         $reports->income,
-        $reports->description,
+        $reports->description ?? "",
         $reports->created_at,
         $reports->updated_at,
     ];

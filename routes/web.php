@@ -201,11 +201,13 @@ Route::get('/shipment-list/{from_branch}','getShipment');
     Route::controller(ReportController::class)
     ->group(function () {
         Route::get('/transaction/income/report', 'incomeReport')->name('transaction.income.report');
-           Route::get('/transaction/excense/report/excel/download', 'incomeReportExcel')->name('transaction.income.report.excel.download');
-        // Route::post('/transaction/excense/store','store')->name('transaction.expense.store');
-        // Route::get('/transaction/excense/edit/{expense_id}', 'edit')->name('transaction.expense.edit');
-        // Route::put('/transaction/excense/update/{expense_id}', 'update')->name('transaction.expense.update');
-        // Route::get('/transaction/excense/delete/{expense_id}', 'delete')->name('transaction.expense.delete');
+           Route::get('/transaction/income/report/excel/download', 'incomeReportExcel')->name('transaction.income.report.excel.download');
+           Route::get('/transaction/expense/report', 'expenseReport')->name('transaction.expense.report');
+           Route::get('/transaction/expense/report/excel/download', 'expenseReportExcel')->name('transaction.expense.report.excel.download');
+           Route::get('/shipment/report/to/branch', 'shipmentReportToBranch')->name('shipment.report');
+           Route::get('/shipment/report/to/branch/excel/download', 'shipmentReportToBranchExcel')->name('shipment.report.to.branch.excel.download');
+           Route::get('/shipment/report/from/branch', 'shipmentReportFromBranch')->name('shipment.report.from.branch');
+           Route::get('/shipment/report/from/branch/excel/download', 'shipmentReportFromBranchExcel')->name('shipment.report.from.branch.excel.download');
     });
 
 

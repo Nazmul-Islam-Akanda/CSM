@@ -14,7 +14,7 @@
               <!-- .page-title-bar -->
               <header class="page-title-bar">
                 <div class="d-flex flex-column flex-md-row">
-           <h1>Income Report  </h1> 
+           <h1>Expense Report  </h1> 
                 </div>
                
               </header>
@@ -42,36 +42,32 @@
 
 <br>
 @if($reports)
-<p><b>Total income is {{$reports->sum('income') ?? ""}}</b></p>  
+<p><b>Total expense is {{$reports->sum('expense') ?? ""}}</b></p>  
 @endif
               <table class="table table-bordered table-striped">
   <thead>
     <tr style='background-color:#00ffff'>
       <th scope="col">#</th>
-      <th scope="col">Beneficiary Branch</th>
-      <th scope="col">From Branch</th>
-      <th scope="col">Shipment ID</th>
-      <th scope="col">From Customer</th>
-      <th scope="col">Income</th>
+      <th scope="col">Branch</th>
+      <th scope="col">Date</th>
+      <th scope="col">Time</th>
+      <th scope="col">Cost</th>
       <th scope="col">Description</th>
-      <th scope="col">Creation Time</th>
     </tr>
   </thead>
   <tbody>
 
 
-  @foreach ($reports as $key=>$item)
+ @foreach ($reports as $key=>$item)
     <tr>
       <th scope="row">{{$key+1}}</th>
       <td>{{$item->branch->name ?? ""}}</td>
-      <td>{{$item->from_branch->name ?? ""}}</td>
-      <td>{{$item->shipment->shipment_id ?? ""}}</td>
-      <td>{{$item->customer->name ?? ""}}</td>
-      <td>{{$item->income}}</td>
-      <td>{{$item->description}}</td>
-      <td>{{$item->created_at}}</td>
+      <td>{{$item->date}}</td>
+      <td>{{$item->time}}</td>
+      <td>{{$item->expense}}</td>
+      <td>{{$item->description ?? ""}}</td>
     </tr>
-    @endforeach 
+   @endforeach 
   </tbody>
 </table>
 
@@ -82,7 +78,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Generate Income Report</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Generate Expense Report</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -90,7 +86,7 @@
       <div class="modal-body">
         
 <!-- //form -->
-      <form action="{{route('transaction.income.report')}}"  method="GET" style="text-align:center;">
+      <form action="{{route('transaction.expense.report')}}"  method="GET" style="text-align:center;">
 
 <div class="row" >
 
@@ -106,18 +102,18 @@
     <br><br><br>
     @if(auth()->user()->role=="admin")
 
-            <label for="exampleFormControlSelect1">Beneficiary Branch</label> 
+            <label for="exampleFormControlSelect1">Branch</label> 
             <select name="branch" class="form-control" id="exampleFormControlSelect1">
             <option value="">Select branch</option>
-            @foreach ($branches as $branch)
+            @foreach ($branches as $branch) 
                     <option value="{{$branch->id}}">{{$branch->name}}</option>
-                    @endforeach
+            @endforeach 
             </select>
  
     @endif
     @if(auth()->user()->role=="branch_manager")
 
-            <label for="exampleFormControlSelect1">Beneficiary Branch</label> 
+            <label for="exampleFormControlSelect1">Branch</label> 
             <select name="branch" class="form-control" id="exampleFormControlSelect1">
            
                     <option value="{{auth()->user()->branch_id}}">{{auth()->user()->branch->name}}</option>
@@ -153,7 +149,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Download Income Report</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Download Expense Report</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -161,7 +157,7 @@
       <div class="modal-body">
         
 <!-- //form -->
-      <form action="{{route('transaction.income.report.excel.download')}}"  method="GET" style="text-align:center;">
+      <form action="{{route('transaction.expense.report.excel.download')}}"  method="GET" style="text-align:center;">
 
 <div class="row" >
 
@@ -177,18 +173,18 @@
     <br><br><br>
     @if(auth()->user()->role=="admin")
 
-            <label for="exampleFormControlSelect1">Beneficiary Branch</label> 
+            <label for="exampleFormControlSelect1">Branch</label> 
             <select name="branch" class="form-control" id="exampleFormControlSelect1">
             <option value="">Select branch</option>
-            @foreach ($branches as $branch)
+          @foreach ($branches as $branch)  
                     <option value="{{$branch->id}}">{{$branch->name}}</option>
-                    @endforeach
+          @endforeach
             </select>
  
     @endif
     @if(auth()->user()->role=="branch_manager")
 
-            <label for="exampleFormControlSelect1">Beneficiary Branch</label> 
+            <label for="exampleFormControlSelect1">Branch</label> 
             <select name="branch" class="form-control" id="exampleFormControlSelect1">
            
                     <option value="{{auth()->user()->branch_id}}">{{auth()->user()->branch->name}}</option>

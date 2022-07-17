@@ -158,7 +158,10 @@
                       <a href="{{route('transaction.income.report')}}" class="menu-link">Income Transactions</a>
                     </li>
                     <li class="menu-item">
-                      <a href="{{route('transaction.expense.list')}}" class="menu-link">Expense Transactions</a>
+                      <a href="{{route('transaction.expense.report')}}" class="menu-link">Expense Transactions</a>
+                    </li>
+                    <li class="menu-item">
+                      <a href="{{route('shipment.report')}}" class="menu-link">Shipments</a>
                     </li>
                   </ul><!-- /child menu -->
                 </li><!-- /.menu-item -->
